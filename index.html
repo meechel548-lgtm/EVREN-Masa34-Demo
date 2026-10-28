@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Masa 34 Bistro | Menü</title>
+<style>
+:root {
+  --cream: #fbf9f5;
+  --green: #1b3b2b;
+  --orange: #d96b27;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--green);
+  font-family: Arial, sans-serif;
+}
+header {
+  background: var(--green);
+  color: white;
+  padding: 26px 20px;
+  text-align: center;
+}
+header h1 { margin: 0 0 8px; font-size: 28px; }
+header p { margin: 0; opacity: .8; }
+main { max-width: 650px; margin: auto; padding: 18px; }
+.table {
+  background: white;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 18px;
+  font-weight: bold;
+}
+h2 { font-size: 19px; }
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  margin: 10px 0;
+}
+.item p { margin: 6px 0 0; color: #66736b; font-size: 14px; }
+.price { font-weight: bold; margin-top: 8px; }
+.controls { display: flex; align-items: center; gap: 10px; }
+button {
+  border: 0;
+  border-radius: 9px;
+  padding: 10px 13px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.change { background: #e9eee9; color: var(--green); }
+.order {
+  width: 100%;
+  background: var(--orange);
+  color: white;
+  padding: 15px;
+  font-size: 16px;
+  margin-top: 18px;
+}
+#summary {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 18px;
+}
+.hidden { display: none; }
+footer { text-align: center; padding: 24px; font-size: 12px; color: #66736b; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Masa 34 Bistro</h1>
+  <p>Lezzetin masanıza geldiği yer.</p>
+</header>
+<main>
+  <div class="table" id="tableLabel">Masa yükleniyor...</div>
+  <p>Menümüzden seçim yapın.</p>
+  <div id="menu"></div>
+  <button class="order" onclick="placeOrder()">Sipariş Özeti Oluştur</button>
+  <section id="summary" class="hidden"></section>
+</main>
+<footer>EVREN Dijital Sistemler · Demo sürümü</footer>
+<script>
+const params = new URLSearchParams(location.search);
+const tableNumber = params.get("table") || params.get("masa") || "34";
+document.getElementById("tableLabel").textContent = "Masa " + tableNumber;
+
+const products = [
+  {id:1, name:"Klasik Burger", category:"Burgerler", price:240, desc:"Dana burger, marul, özel sos"},
+  {id:2, name:"Cheeseburger", category:"Burgerler", price:270, desc:"Dana burger, cheddar peyniri"},
+  {id:3, name:"Margherita Pizza", category:"Pizzalar", price:260, desc:"Domates sosu, mozzarella"},
+  {id:4, name:"Karışık Pizza", category:"Pizzalar", price:320, desc:"Peynir, sebze ve özel sos"},
+  {id:5, name:"Izgara Tavuk", category:"Ana Yemekler", price:290, desc:"Izgara tavuk ve garnitür"},
+  {id:6, name:"Sezar Salata", category:"Salatalar", price:190, desc:"Taze yeşillikler ve sos"},
+  {id:7, name:"Patates Kızartması", category:"Atıştırmalıklar", price:100, desc:"Çıtır patates"},
+  {id:8, name:"Limonata", category:"İçecekler", price:75, desc:"Ev yapımı limonata"},
+  {id:9, name:"San Sebastian", category:"Tatlılar", price:160, desc:"Kremamsı cheesecake"}
+];
+const cart = {};
+const menu = document.getElementById("menu");
+
+[...new Set(products.map(p => p.category))].forEach(category => {
+  const heading = document.createElement("h2");
+  heading.textContent = category;
+  menu.appendChild(heading);
+
+  products.filter(p => p.category === category).forEach(p => {
+    const el = document.createElement("article");
+    el.className = "item";
+    el.innerHTML = `
+      <div>
+        <strong>${p.name}</strong>
+        <p>${p.desc}</p>
+        <div class="price">${p.price} TL</div>
+      </div>
+      <div class="controls">
+        <button class="change" aria-label="${p.name} azalt" onclick="changeQty(${p.id},-1)">−</button>
+        <span id="qty-${p.id}">0</span>
+        <button class="change" aria-label="${p.name} artır" onclick="changeQty(${p.id},1)">+</button>
+      </div>`;
+    menu.appendChild(el);
+  });
+});
+
+function changeQty(id, delta) {
+  cart[id] = Math.max(0, (cart[id] || 0) + delta);
+  document.getElementById("qty-" + id).textContent = cart[id];
+}
+
+function placeOrder() {
+  const chosen = products.filter(p => cart[p.id] > 0);
+  const summary = document.getElementById("summary");
+  summary.classList.remove("hidden");
+
+  if (!chosen.length) {
+    summary.textContent = "Lütfen önce menüden bir ürün seçin.";
+    return;
+  }
+
+  let total = 0;
+  summary.innerHTML = "<h2>Sipariş Özeti</h2>";
+  chosen.forEach(p => {
+    const lineTotal = p.price * cart[p.id];
+    total += lineTotal;
+    const line = document.createElement("p");
+    line.textContent = `${p.name} × ${cart[p.id]} = ${lineTotal} TL`;
+    summary.appendChild(line);
+  });
+
+  const totalLine = document.createElement("h3");
+  totalLine.textContent = "Toplam: " + total + " TL";
+  summary.appendChild(totalLine);
+
+  const note = document.createElement("p");
+  note.textContent = "Demo önizlemesidir. Sipariş restorana gönderilmedi.";
+  summary.appendChild(note);
+}
+</script>
+</body>
+  </html>
+  
