@@ -1,168 +1,347 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Masa 34 Bistro | Menü</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#1b3b2b">
+<title>Masa 34 Bistro</title>
 <style>
-:root {
-  --cream: #fbf9f5;
-  --green: #1b3b2b;
-  --orange: #d96b27;
-}
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  background: var(--cream);
-  color: var(--green);
-  font-family: Arial, sans-serif;
-}
-header {
-  background: var(--green);
-  color: white;
-  padding: 26px 20px;
-  text-align: center;
-}
-header h1 { margin: 0 0 8px; font-size: 28px; }
-header p { margin: 0; opacity: .8; }
-main { max-width: 650px; margin: auto; padding: 18px; }
-.table {
-  background: white;
-  border-radius: 12px;
-  padding: 14px;
-  margin-bottom: 18px;
-  font-weight: bold;
-}
-h2 { font-size: 19px; }
-.item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  background: white;
-  padding: 15px;
-  border-radius: 12px;
-  margin: 10px 0;
-}
-.item p { margin: 6px 0 0; color: #66736b; font-size: 14px; }
-.price { font-weight: bold; margin-top: 8px; }
-.controls { display: flex; align-items: center; gap: 10px; }
-button {
-  border: 0;
-  border-radius: 9px;
-  padding: 10px 13px;
-  cursor: pointer;
-  font-weight: bold;
-}
-.change { background: #e9eee9; color: var(--green); }
-.order {
-  width: 100%;
-  background: var(--orange);
-  color: white;
-  padding: 15px;
-  font-size: 16px;
-  margin-top: 18px;
-}
-#summary {
-  background: white;
-  border-radius: 12px;
-  padding: 16px;
-  margin-top: 18px;
-}
-.hidden { display: none; }
-footer { text-align: center; padding: 24px; font-size: 12px; color: #66736b; }
+:root{--cream:#fbf9f5;--forest:#1b3b2b;--terracotta:#d96b27;--text:#1a1a1a;--muted:#6b6b6b;--border:#e5e0d8;--white:#fff;--danger:#c0392b;--shadow:0 2px 12px rgba(27,59,43,.08);--radius:14px}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--cream);color:var(--text);line-height:1.5;padding-bottom:100px;-webkit-font-smoothing:antialiased}
+.demo-banner{background:#fff3cd;color:#856404;font-size:11px;text-align:center;padding:8px 12px;border-bottom:1px solid #ffeaa7}
+.hidden{display:none!important}
+.app-header{background:var(--forest);color:var(--white);position:sticky;top:0;z-index:100;box-shadow:var(--shadow)}
+.app-header-inner{max-width:720px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand-wrap{display:flex;align-items:center;gap:10px}
+.brand-logo{width:40px;height:40px;background:var(--terracotta);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;color:var(--white)}
+.brand-text{display:flex;flex-direction:column}
+.brand-name{font-size:15px;font-weight:700;line-height:1.2}
+.brand-sub{font-size:11px;opacity:.75;margin-top:2px}
+.icon-btn{width:40px;height:40px;background:rgba(255,255,255,.12);border:none;border-radius:50%;font-size:18px;color:var(--white);cursor:pointer;display:flex;align-items:center;justify-content:center;text-decoration:none}
+.search-wrap{position:sticky;top:64px;z-index:90;background:var(--cream);padding:12px 16px 8px;max-width:720px;margin:0 auto}
+.search-input{width:100%;padding:11px 16px;border:1.5px solid var(--border);border-radius:24px;font-size:14px;background:var(--white);outline:none}
+.search-input:focus{border-color:var(--forest)}
+.cat-nav{display:flex;gap:8px;overflow-x:auto;padding:8px 16px 14px;max-width:720px;margin:0 auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;position:sticky;top:116px;z-index:85;background:var(--cream)}
+.cat-nav::-webkit-scrollbar{display:none}
+.cat-btn{flex-shrink:0;padding:8px 16px;border:1.5px solid var(--border);background:var(--white);color:var(--text);border-radius:20px;font-size:13px;font-weight:600;cursor:pointer}
+.cat-btn.active{background:var(--forest);color:var(--white);border-color:var(--forest)}
+.menu-grid{max-width:720px;margin:0 auto;padding:0 16px;display:flex;flex-direction:column;gap:10px}
+.cat-title{font-size:15px;font-weight:800;color:var(--forest);margin:20px 0 4px;padding-bottom:6px;border-bottom:2px solid var(--terracotta);display:inline-block}
+.product-card{background:var(--white);border-radius:var(--radius);padding:12px;box-shadow:var(--shadow);display:flex;gap:12px;align-items:flex-start}
+.product-img{width:74px;height:74px;border-radius:10px;background:linear-gradient(135deg,#f0ebe2,#e5ddd0);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0}
+.product-info{flex:1;min-width:0}
+.product-name{font-size:14px;font-weight:700;margin-bottom:3px}
+.product-desc{font-size:12px;color:var(--muted);margin-bottom:6px;line-height:1.35}
+.product-price{font-size:15px;font-weight:800;color:var(--terracotta)}
+.product-actions{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.add-btn{padding:8px 14px;background:var(--forest);color:var(--white);border:none;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap}
+.qty-control{display:flex;align-items:center;gap:6px}
+.qty-btn{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--border);background:var(--white);font-size:16px;font-weight:700;color:var(--forest);cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1}
+.qty-btn:active{background:var(--cream)}
+.qty-num{font-size:13px;font-weight:700;min-width:18px;text-align:center}
+.empty-state{text-align:center;padding:40px 16px;color:var(--muted);font-size:14px}
+.cart-bar{position:fixed;bottom:0;left:0;right:0;background:var(--forest);color:var(--white);padding:12px 16px;display:none;align-items:center;justify-content:space-between;box-shadow:0 -2px 16px rgba(0,0,0,.15);z-index:200}
+.cart-bar.show{display:flex}
+.cart-bar-info{display:flex;flex-direction:column}
+.cart-bar-info span{font-size:11px;opacity:.85}
+.cart-bar-info strong{font-size:17px}
+.btn-primary{background:var(--terracotta);color:var(--white);border:none;padding:11px 20px;border-radius:24px;font-size:14px;font-weight:700;cursor:pointer}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed}
+.btn-block{width:100%;padding:14px}
+.btn-secondary{background:transparent;color:var(--forest);border:1.5px solid var(--border);padding:11px 20px;border-radius:24px;font-size:14px;font-weight:600;cursor:pointer}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:flex-end;justify-content:center;z-index:300}
+.modal-overlay.show{display:flex}
+.modal{background:var(--white);width:100%;max-width:560px;border-radius:20px 20px 0 0;max-height:90vh;display:flex;flex-direction:column;animation:slideUp .25s ease}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.modal-header{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
+.modal-header h2{font-size:16px}
+.modal-close{background:none;border:none;font-size:26px;line-height:1;color:var(--muted);cursor:pointer;width:32px;height:32px;display:flex;align-items:center;justify-content:center}
+.modal-body{padding:16px;overflow-y:auto;flex:1}
+.modal-footer{padding:14px 16px;border-top:1px solid var(--border);flex-shrink:0}
+.total-row{display:flex;justify-content:space-between;font-size:16px;font-weight:700;margin-bottom:12px}
+.total-row strong{color:var(--terracotta)}
+.cart-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)}
+.cart-item:last-child{border-bottom:none}
+.cart-item-info{flex:1}
+.cart-item-name{font-size:13px;font-weight:600}
+.cart-item-price{font-size:12px;color:var(--terracotta);font-weight:700;margin-top:2px}
+.cart-item-qty{display:flex;align-items:center;gap:6px}
+.cart-empty{text-align:center;color:var(--muted);padding:40px 0;font-size:14px}
+.form-label{display:block;font-size:12px;font-weight:700;color:var(--forest);margin:14px 0 6px;text-transform:uppercase;letter-spacing:.4px}
+.form-label:first-child{margin-top:0}
+.form-input{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;background:var(--white);outline:none;font-family:inherit}
+.form-input:focus{border-color:var(--forest)}
+.radio-group{display:flex;gap:8px}
+.radio-option{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-weight:600;cursor:pointer}
+.radio-option input{display:none}
+.radio-option.active{border-color:var(--forest);background:rgba(27,59,43,.05);color:var(--forest)}
+.gps-result{margin-top:10px;padding:10px;background:rgba(27,59,43,.05);border-radius:8px;font-size:12px;display:none}
+.gps-result.show{display:block}
+.gps-result a{color:var(--forest);font-weight:700;text-decoration:underline}
+.summary-box{margin-top:18px;padding:14px;background:var(--cream);border-radius:10px;font-size:13px;line-height:1.6;border:1px dashed var(--border)}
+.summary-box strong{color:var(--forest)}
+.toast{position:fixed;top:90px;left:50%;transform:translateX(-50%) translateY(-20px);background:var(--forest);color:var(--white);padding:12px 24px;border-radius:24px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:all .3s;z-index:400;max-width:90vw;text-align:center}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.muted{color:var(--muted);font-size:13px}
+
+/* STAFF */
+.staff-container{max-width:720px;margin:0 auto;padding:16px}
+.staff-tabs{display:flex;gap:6px;margin-bottom:14px}
+.staff-tab{flex:1;padding:10px;border:1.5px solid var(--border);background:var(--white);border-radius:10px;font-size:13px;font-weight:700;cursor:pointer}
+.staff-tab.active{background:var(--forest);color:var(--white);border-color:var(--forest)}
+.filter-tabs{display:flex;gap:6px;overflow-x:auto;margin-bottom:12px;padding-bottom:4px;scrollbar-width:none}
+.filter-tabs::-webkit-scrollbar{display:none}
+.filter-tab{flex-shrink:0;padding:6px 14px;border:1.5px solid var(--border);background:var(--white);border-radius:16px;font-size:12px;font-weight:600;cursor:pointer}
+.filter-tab.active{background:var(--forest);color:var(--white);border-color:var(--forest)}
+.order-card{background:var(--white);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow);margin-bottom:10px;border-left:4px solid var(--terracotta)}
+.order-card.status-onaylandi{border-left-color:#3498db}
+.order-card.status-hazirlaniyor{border-left-color:#f0ad4e}
+.order-card.status-kurye_bekliyor{border-left-color:#9b59b6}
+.order-card.status-yolda{border-left-color:#e67e22}
+.order-card.status-tamamlandi{border-left-color:#27ae60;opacity:.7}
+.order-card.status-iptal{border-left-color:#95a5a6;opacity:.5}
+.order-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;gap:8px}
+.order-id{font-size:10px;color:var(--muted);font-family:monospace;word-break:break-all}
+.order-cust{font-size:14px;font-weight:700;color:var(--forest)}
+.order-type-badge{font-size:10px;font-weight:700;padding:3px 8px;border-radius:10px;background:var(--cream);color:var(--forest);white-space:nowrap}
+.order-type-badge.paket{background:#ffe9d6;color:var(--terracotta)}
+.order-items-list{font-size:12px;color:var(--text);margin:8px 0;line-height:1.6}
+.order-meta{font-size:11px;color:var(--muted);margin-bottom:8px}
+.order-address{font-size:12px;background:var(--cream);padding:8px 10px;border-radius:8px;margin:8px 0;color:var(--forest)}
+.order-address a{color:var(--terracotta);font-weight:700}
+.order-total{font-size:15px;font-weight:800;color:var(--terracotta)}
+.order-footer{display:flex;align-items:center;justify-content:space-between;margin-top:10px;gap:8px;flex-wrap:wrap}
+.status-select{flex:1;min-width:140px;padding:9px 10px;border:1.5px solid var(--border);border-radius:8px;font-size:12px;font-weight:600;background:var(--white);cursor:pointer}
+.login-wrap{max-width:400px;margin:40px auto;padding:0 16px}
+.login-card{background:var(--white);border-radius:var(--radius);padding:24px;box-shadow:0 8px 32px rgba(27,59,43,.15)}
+.login-card h2{font-size:20px;margin-bottom:4px;color:var(--forest)}
+.login-card .muted{margin-bottom:20px;display:block}
+.login-tabs{display:flex;gap:6px;margin-bottom:16px}
+.login-tab{flex:1;padding:10px;border:1.5px solid var(--border);background:var(--white);border-radius:10px;font-size:13px;font-weight:700;cursor:pointer}
+.login-tab.active{background:var(--forest);color:var(--white);border-color:var(--forest)}
+.login-error{color:var(--danger);font-size:12px;margin-top:8px;display:none}
+.login-error.show{display:block}
+.btn-row{display:flex;gap:8px;margin-top:8px}
+.btn-row .btn-primary,.btn-row .btn-secondary{flex:1}
 </style>
 </head>
 <body>
-<header>
-  <h1>Masa 34 Bistro</h1>
-  <p>Lezzetin masanıza geldiği yer.</p>
-</header>
-<main>
-  <div class="table" id="tableLabel">Masa yükleniyor...</div>
-  <p>Menümüzden seçim yapın.</p>
-  <div id="menu"></div>
-  <button class="order" onclick="placeOrder()">Sipariş Özeti Oluştur</button>
-  <section id="summary" class="hidden"></section>
-</main>
-<footer>EVREN Dijital Sistemler · Demo sürümü</footer>
-<script>
-const params = new URLSearchParams(location.search);
-const tableNumber = params.get("table") || params.get("masa") || "34";
-document.getElementById("tableLabel").textContent = "Masa " + tableNumber;
 
-const products = [
-  {id:1, name:"Klasik Burger", category:"Burgerler", price:240, desc:"Dana burger, marul, özel sos"},
-  {id:2, name:"Cheeseburger", category:"Burgerler", price:270, desc:"Dana burger, cheddar peyniri"},
-  {id:3, name:"Margherita Pizza", category:"Pizzalar", price:260, desc:"Domates sosu, mozzarella"},
-  {id:4, name:"Karışık Pizza", category:"Pizzalar", price:320, desc:"Peynir, sebze ve özel sos"},
-  {id:5, name:"Izgara Tavuk", category:"Ana Yemekler", price:290, desc:"Izgara tavuk ve garnitür"},
-  {id:6, name:"Sezar Salata", category:"Salatalar", price:190, desc:"Taze yeşillikler ve sos"},
-  {id:7, name:"Patates Kızartması", category:"Atıştırmalıklar", price:100, desc:"Çıtır patates"},
-  {id:8, name:"Limonata", category:"İçecekler", price:75, desc:"Ev yapımı limonata"},
-  {id:9, name:"San Sebastian", category:"Tatlılar", price:160, desc:"Kremamsı cheesecake"}
-];
-const cart = {};
-const menu = document.getElementById("menu");
+<div class="demo-banner" id="demoBanner">⚠️ DEMO — Siparişler yalnızca bu tarayıcıda saklanır. Farklı cihazda görünmez.</div>
 
-[...new Set(products.map(p => p.category))].forEach(category => {
-  const heading = document.createElement("h2");
-  heading.textContent = category;
-  menu.appendChild(heading);
-
-  products.filter(p => p.category === category).forEach(p => {
-    const el = document.createElement("article");
-    el.className = "item";
-    el.innerHTML = `
-      <div>
-        <strong>${p.name}</strong>
-        <p>${p.desc}</p>
-        <div class="price">${p.price} TL</div>
+<!-- MÜŞTERİ GÖRÜNÜMÜ -->
+<div id="customerView">
+  <header class="app-header">
+    <div class="app-header-inner">
+      <div class="brand-wrap">
+        <div class="brand-logo">M34</div>
+        <div class="brand-text">
+          <div class="brand-name">Masa 34 Bistro</div>
+          <div class="brand-sub" id="tableSub">Masa: 34</div>
+        </div>
       </div>
-      <div class="controls">
-        <button class="change" aria-label="${p.name} azalt" onclick="changeQty(${p.id},-1)">−</button>
-        <span id="qty-${p.id}">0</span>
-        <button class="change" aria-label="${p.name} artır" onclick="changeQty(${p.id},1)">+</button>
-      </div>`;
-    menu.appendChild(el);
-  });
-});
+      <button class="icon-btn" id="staffLoginBtn" title="Personel Girişi">👤</button>
+    </div>
+  </header>
 
-function changeQty(id, delta) {
-  cart[id] = Math.max(0, (cart[id] || 0) + delta);
-  document.getElementById("qty-" + id).textContent = cart[id];
-}
+  <div class="search-wrap">
+    <input type="search" id="searchInput" class="search-input" placeholder="Menüde ara...">
+  </div>
 
-function placeOrder() {
-  const chosen = products.filter(p => cart[p.id] > 0);
-  const summary = document.getElementById("summary");
-  summary.classList.remove("hidden");
+  <nav class="cat-nav" id="catNav"></nav>
+  <main id="menuContainer" class="menu-grid"></main>
 
-  if (!chosen.length) {
-    summary.textContent = "Lütfen önce menüden bir ürün seçin.";
-    return;
-  }
+  <div class="cart-bar" id="cartBar">
+    <div class="cart-bar-info">
+      <span id="cartCount">0 ürün</span>
+      <strong id="cartTotal">₺0</strong>
+    </div>
+    <button class="btn-primary" id="openCartBtn">Sepeti Gör</button>
+  </div>
+</div>
 
-  let total = 0;
-  summary.innerHTML = "<h2>Sipariş Özeti</h2>";
-  chosen.forEach(p => {
-    const lineTotal = p.price * cart[p.id];
-    total += lineTotal;
-    const line = document.createElement("p");
-    line.textContent = `${p.name} × ${cart[p.id]} = ${lineTotal} TL`;
-    summary.appendChild(line);
-  });
+<!-- PERSONEL/KURYE GİRİŞ GÖRÜNÜMÜ -->
+<div id="loginView" class="hidden">
+  <header class="app-header">
+    <div class="app-header-inner">
+      <div class="brand-wrap">
+        <div class="brand-logo">M34</div>
+        <div class="brand-text">
+          <div class="brand-name">Panel Girişi</div>
+          <div class="brand-sub">Masa 34 Bistro</div>
+        </div>
+      </div>
+      <button class="icon-btn" id="backToMenuBtn1" title="Menüye Dön">←</button>
+    </div>
+  </header>
 
-  const totalLine = document.createElement("h3");
-  totalLine.textContent = "Toplam: " + total + " TL";
-  summary.appendChild(totalLine);
+  <div class="login-wrap">
+    <div class="login-card">
+      <h2>Giriş Yap</h2>
+      <span class="muted">Demo giriş — gerçek güvenli kimlik değildir</span>
 
-  const note = document.createElement("p");
-  note.textContent = "Demo önizlemesidir. Sipariş restorana gönderilmedi.";
-  summary.appendChild(note);
-}
-</script>
-</body>
-  </html>
-  
+      <div class="login-tabs">
+        <button class="login-tab active" data-role="staff">Personel</button>
+        <button class="login-tab" data-role="courier">Kurye</button>
+      </div>
+
+      <label class="form-label">Şifre</label>
+      <input type="password" id="loginPass" class="form-input" placeholder="Demo şifre">
+      <div class="login-error" id="loginError"></div>
+      <div class="btn-row">
+        <button class="btn-secondary" id="cancelLoginBtn">Vazgeç</button>
+        <button class="btn-primary" id="doLoginBtn">Giriş Yap</button>
+      </div>
+      <p class="muted" style="margin-top:14px;font-size:11px;">Demo şifresi: <strong>masa34</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- PERSONEL PANELİ -->
+<div id="staffView" class="hidden">
+  <header class="app-header">
+    <div class="app-header-inner">
+      <div class="brand-wrap">
+        <div class="brand-logo">M34</div>
+        <div class="brand-text">
+          <div class="brand-name">Personel Paneli</div>
+          <div class="brand-sub">Masa 34 Bistro</div>
+        </div>
+      </div>
+      <button class="icon-btn" id="staffLogoutBtn" title="Çıkış">🚪</button>
+    </div>
+  </header>
+
+  <div class="staff-container">
+    <div class="filter-tabs" id="staffFilter">
+      <button class="filter-tab active" data-filter="all">Tümü</button>
+      <button class="filter-tab" data-filter="yeni">Yeni</button>
+      <button class="filter-tab" data-filter="onaylandi">Onaylandı</button>
+      <button class="filter-tab" data-filter="hazirlaniyor">Hazırlanıyor</button>
+      <button class="filter-tab" data-filter="kurye_bekliyor">Kurye Bekliyor</button>
+      <button class="filter-tab" data-filter="yolda">Yolda</button>
+      <button class="filter-tab" data-filter="tamamlandi">Tamamlandı</button>
+      <button class="filter-tab" data-filter="iptal">İptal</button>
+    </div>
+    <div id="ordersContainer"></div>
+  </div>
+</div>
+
+<!-- KURYE PANELİ -->
+<div id="courierView" class="hidden">
+  <header class="app-header">
+    <div class="app-header-inner">
+      <div class="brand-wrap">
+        <div class="brand-logo">M34</div>
+        <div class="brand-text">
+          <div class="brand-name">Kurye Paneli</div>
+          <div class="brand-sub">Teslimatlar</div>
+        </div>
+      </div>
+      <button class="icon-btn" id="courierLogoutBtn" title="Çıkış">🚪</button>
+    </div>
+  </header>
+
+  <div class="staff-container">
+    <div class="filter-tabs" id="courierFilter">
+      <button class="filter-tab active" data-filter="assigned">Bana Atananlar</button>
+      <button class="filter-tab" data-filter="done">Tamamlananlar</button>
+    </div>
+    <div id="courierOrdersContainer"></div>
+  </div>
+</div>
+
+<!-- SEPET MODAL -->
+<div class="modal-overlay" id="cartModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>Sepetiniz</h2>
+      <button class="modal-close" id="closeCartBtn">×</button>
+    </div>
+    <div class="modal-body" id="cartItems"></div>
+    <div class="modal-footer">
+      <div class="total-row"><span>Ara Toplam</span><strong id="modalTotal">₺0</strong></div>
+      <button class="btn-primary btn-block" id="goCheckoutBtn">Devam Et</button>
+    </div>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="checkoutModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>Sipariş Bilgileri</h2>
+      <button class="modal-close" id="closeCheckoutBtn">×</button>
+    </div>
+    <div class="modal-body">
+      <label class="form-label">Ad Soyad *</label>
+      <input type="text" id="custName" class="form-input" placeholder="Adınız Soyadınız">
+
+      <label class="form-label">Sipariş Türü *</label>
+      <div class="radio-group" id="typeGroup">
+        <label class="radio-option active" data-type="masa">
+          <input type="radio" name="orderType" value="masa" checked>
+          <span>Masada</span>
+        </label>
+        <label class="radio-option" data-type="paket">
+          <input type="radio" name="orderType" value="paket">
+          <span>Paket Servis</span>
+        </label>
+      </div>
+
+      <div id="masaFields">
+        <label class="form-label">Masa Numarası *</label>
+        <input type="number" id="tableNo" class="form-input" placeholder="Masa no" value="34" min="1" max="100">
+      </div>
+
+      <div id="paketFields" class="hidden">
+        <label class="form-label">Teslimat Adresi *</label>
+        <textarea id="address" class="form-input" rows="3" placeholder="Sokak, bina, daire..."></textarea>
+        <button class="btn-secondary btn-block" id="gpsBtn" style="margin-top:8px;">📍 Konumumu Paylaş (isteğe bağlı)</button>
+        <div id="gpsResult" class="gps-result"></div>
+      </div>
+
+      <label class="form-label">Sipariş Notu (isteğe bağlı)</label>
+      <input type="text" id="orderNote" class="form-input" placeholder="Örn: soğansız olsun">
+
+      <div class="summary-box" id="summaryBox"></div>
+    </div>
+    <div class="modal-footer">
+      <div class="btn-row">
+        <button class="btn-secondary" id="backToCartBtn">Geri</button>
+        <button class="btn-primary" id="submitOrderBtn">Siparişi Onayla</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BAŞARI MODAL -->
+<div class="modal-overlay" id="successModal">
+  <div class="modal">
+    <div class="modal-body" style="text-align:center;padding:32px 16px;">
+      <div style="font-size:48px;margin-bottom:12px;">✅</div>
+      <h2 style="margin-bottom:8px;">Sipariş Alındı!</h2>
+      <p class="muted" style="margin-bottom:16px;">Sipariş numaranız:</p>
+      <div id="orderIdDisplay" style="font-size:16px;font-weight:800;color:var(--forest);margin-bottom:16px;word-break:break-all;"></div>
+      <p class="muted" style="font-size:13px;">Personel panelinde görüntülenebilir.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-primary btn-block" id="goStaffAfterOrderBtn">Personel Panelini Aç</button>
+      <button class="btn-secondary btn-block" id="closeSuccessBtn" style="margin-top:8px;">Menüye Dön</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ====== VERİ ======
+const CONFIG={RESTAURANT:"Masa 34 Bistro",CURRENCY:"₺",DEMO_PASS:"masa34"};
+const MENU_DATA=[
+{id:"b1",cat:"Burgerler",emoji:"🍔",name:"Klasik Burger",desc:"Dana köftesi, cheddar, marul, domates, özel sos",price:185},
+{id:"b2",cat:"Burgerler",emoji:"🍔",name:"Truffle Burger",desc:"Dana köftesi, trüf mayonez, karamelize soğan",price:225},
+{id:"b3",cat:"Burgerler",emoji:"🍗",name:"Tavuk Burger",desc:"Çıtır tavuk, coleslaw, ranch sos",price:165},
+{id:"p1",cat:"Pizzalar",emoji:"🍕",name:"Margherita",desc:"Domates sosu, mozzarella, fesleğen",price:195},
+{id:"p2",cat:"Pizzalar",emoji:"🍕",name:"Pepperoni",desc:"Domates sosu, mozzarella, pepperoni",price:220},
+{id:"p3",cat:"Pizzalar",emoji:"🧀",name:"Dört Peynirli",desc:"Mozzarella, gorgonzola, parmesan, cheddar",price:23
