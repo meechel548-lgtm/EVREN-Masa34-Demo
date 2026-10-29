@@ -4115,6 +4115,45 @@ body::before{opacity:.05;mix-blend-mode:screen}
 .badge.pirinç{background:var(--gold);color:var(--bg)}
 .divider{color:var(--gold)}
 .divider::before,.divider::after{background:linear-gradient(90deg,transparent,var(--kenar-2),transparent)}
+<style id="theme-fix">
+/* 1. Fotoğrafı geri getir */
+.arch-frame{
+  background:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=700&h=900&fit=crop&q=85') center/cover no-repeat !important;
+  border-color:rgba(240,233,219,.18) !important;
+}
+.arch-frame::after{
+  background:linear-gradient(180deg,rgba(15,12,10,.1) 0%,transparent 40%,rgba(15,12,10,.7) 100%) !important;
+}
+
+/* 2. Mobilde küçült ve düzelt */
+@media (max-width:767px){
+  .hero-in{
+    grid-template-columns:1fr !important;
+    gap:16px !important;
+  }
+  .hero-art{
+    min-height:auto !important;
+    margin-bottom:8px !important;
+  }
+  .arch-frame{
+    max-width:220px !important;
+    aspect-ratio:1/1.1 !important;
+    margin:0 auto !important;
+  }
+  .arch-badge{
+    font-size:10px !important;
+    padding:4px 10px !important;
+    top:8% !important;
+  }
+  .hero-leaf{
+    display:none !important;
+  }
+  .hero h1{
+    font-size:42px !important;
+    margin-top:12px !important;
+  }
+  .hero-lede{
+    font-size:15px !important;
+  }
+}
 </style>
-</body>
-</html>
