@@ -1,771 +1,1391 @@
+```html
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#0a0908">
-<title>Masa 34 Bistro — Premium Ege Sofrası</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-/* =========================================
-   1. TEMEL AYARLAR VE RENK PALETİ
-   ========================================= */
-:root{
-  --bg-deep: #0a0908;      
-  --bg-surface: #14110f;   
-  --bg-elevated: #1c1714;  
-  
-  --text-primary: #f5f0e6; 
-  --text-secondary: #a69b8d; 
-  --text-muted: #6b6156;   
-  
-  --accent: #d99b55;       
-  --accent-hover: #e8b072;
-  --accent-dim: rgba(217, 155, 85, 0.15);
-  
-  --border-light: rgba(245, 240, 230, 0.08);
-  --border-strong: rgba(245, 240, 230, 0.15);
-  --shadow-premium: 0 10px 40px rgba(0,0,0,0.7);
-  
-  --font-serif: "Fraunces", Georgia, serif;
-  --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA Gastronomi & Duyusal Deneyim</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        aura: {
+                            bg: '#0A0A0C',
+                            card: '#121216',
+                            cardBorder: 'rgba(212, 175, 55, 0.15)',
+                            gold: '#D4AF37',
+                            goldLight: '#F3E5AB',
+                            goldDark: '#997A15',
+                            textMuted: '#8E8E93',
+                            surface: '#1A1A22'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #0A0A0C;
+            color: #E5E5EA;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
 
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-html { scroll-behavior: smooth; }
-body { font-family: var(--font-sans); background-color: var(--bg-deep); color: var(--text-primary); line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-body.lock { overflow: hidden; }
-img, video, svg { display: block; max-width: 100%; }
-button, input { font: inherit; color: inherit; background: none; border: 0; }
-button { cursor: pointer; }
-a { color: inherit; text-decoration: none; }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0A0C;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2A2A35;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
 
-body::after {
-  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 9999;
-  opacity: 0.03; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); mix-blend-mode: screen;
-}
+        /* Glassmorphism */
+        .glass-panel {
+            background: rgba(18, 18, 22, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.12);
+        }
 
-h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 700; line-height: 1.1; }
-h1 { font-size: clamp(48px, 12vw, 90px); font-weight: 900; letter-spacing: -0.03em; }
-em { font-style: italic; color: var(--accent); font-weight: 400; }
-.label { font-family: var(--font-sans); font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); }
+        .glass-card {
+            background: linear-gradient(135deg, rgba(25, 25, 32, 0.6) 0%, rgba(14, 14, 18, 0.8) 100%);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600; font-size: 14px; padding: 14px 28px; border-radius: 999px; transition: all 0.3s; }
-.btn-primary { background: var(--accent); color: var(--bg-deep); box-shadow: 0 4px 15px var(--accent-dim); }
-.btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); }
+        .glass-card:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.8), 0 0 20px 0 rgba(212, 175, 55, 0.1);
+        }
 
-/* Header */
-.hdr { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10, 9, 8, 0.7); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-light); }
-.hdr-in { max-width: 1200px; margin: 0 auto; height: 72px; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
-.brand { display: flex; align-items: center; gap: 14px; }
-.brand-logo { width: 42px; height: 42px; border-radius: 50%; background: var(--accent); color: var(--bg-deep); display: grid; place-items: center; font-family: var(--font-serif); font-weight: 900; font-size: 15px; }
-.brand-name { font-family: var(--font-serif); font-size: 18px; font-weight: 700; line-height: 1.1; }
-.brand-sub { font-size: 10px; color: var(--text-secondary); letter-spacing: 0.15em; text-transform: uppercase; }
+        /* Gold Gradient Text */
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF5C0 0%, #D4AF37 50%, #AA7C11 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-.cart-btn { display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-light); padding: 10px 20px; border-radius: 999px; font-weight: 600; font-size: 14px; position: relative; transition: all 0.3s; }
-.cart-btn:hover { border-color: var(--accent); }
-.cart-btn svg { width: 18px; height: 18px; color: var(--accent); }
-.cart-badge { position: absolute; top: -6px; right: -6px; background: var(--accent); color: var(--bg-deep); width: 22px; height: 22px; border-radius: 50%; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; border: 2px solid var(--bg-deep); transform: scale(0); transition: transform 0.3s var(--ease-spring); }
-.cart-badge.show { transform: scale(1); }
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+        }
 
-/* Hero */
-.hero { position: relative; min-height: 100vh; display: flex; align-items: center; padding: 120px 24px 60px; overflow: hidden; }
-.hero-arch-wrapper { position: absolute; top: 50%; right: -10%; transform: translateY(-45%); width: 100%; max-width: 800px; height: 90vh; max-height: 900px; z-index: 0; border-top-left-radius: 50vw; border-top-right-radius: 50vw; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; overflow: hidden; border: 1px solid var(--border-strong); opacity: 0.65; box-shadow: var(--shadow-premium); }
-@media(min-width: 900px) { .hero-arch-wrapper { right: 5%; opacity: 0.8; } }
-.hero-arch-wrapper video { width: 100%; height: 100%; object-fit: cover; }
-.hero-arch-wrapper::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, var(--bg-deep) 100%); }
-.hero-content { position: relative; z-index: 2; max-width: 800px; width: 100%; margin: 0 auto; }
-@media(min-width: 900px) { .hero-content { margin: 0; margin-left: 5%; } }
-.hero-label { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 24px; animation: fadeUp 0.8s forwards; opacity: 0; }
-.hero-label::before { content: ""; width: 30px; height: 1px; background: var(--accent); }
-.hero h1 { margin-bottom: 24px; animation: fadeUp 0.8s 0.1s forwards; opacity: 0; }
-.hero h1 em { display: block; font-size: 0.9em; margin-top: 4px; }
-.hero p { font-size: clamp(16px, 2vw, 18px); color: var(--text-secondary); max-width: 460px; line-height: 1.6; margin-bottom: 40px; animation: fadeUp 0.8s 0.2s forwards; opacity: 0; }
-.hero p b { color: var(--text-primary); font-weight: 600; }
-.hero-actions { animation: fadeUp 0.8s 0.3s forwards; opacity: 0; }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-@media(max-width: 767px) {
-  .hero { padding-top: 100px; align-items: flex-start; min-height: 90vh; }
-  .hero-arch-wrapper { top: 10%; right: 50%; transform: translateX(50%); width: 90vw; height: 60vh; opacity: 0.4; }
-  .hero-content { margin-top: 40px; text-align: center; }
-  .hero-label::before { display: none; }
-  .hero p { margin: 0 auto 32px; }
-}
+        .gold-gradient-bg-hover:hover {
+            background: linear-gradient(135deg, #E6C687 0%, #D4AF37 100%);
+        }
 
-/* Menu */
-.menu-section { max-width: 1200px; margin: 0 auto; padding: 60px 24px 120px; background: var(--bg-deep); position: relative; z-index: 10; }
-.toolbar { position: sticky; top: 72px; z-index: 50; background: rgba(10, 9, 8, 0.85); backdrop-filter: blur(12px); padding: 16px 0; border-bottom: 1px solid var(--border-light); margin-bottom: 40px; display: flex; flex-direction: column; gap: 16px; }
-.search-box { position: relative; max-width: 400px; width: 100%; margin: 0 auto; }
-.search-box input { width: 100%; padding: 14px 20px 14px 48px; background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: 999px; font-size: 15px; }
-.search-box input:focus { border-color: var(--accent); outline: none; }
-.search-box svg { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--text-muted); }
+        /* Custom Shimmer Animation */
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .shimmer-bg {
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(212,175,55,0.08) 50%, rgba(255,255,255,0) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite;
+        }
 
-.cat-nav { display: flex; gap: 12px; overflow-x: auto; padding: 4px 0; justify-content: flex-start; scrollbar-width: none; }
-@media(min-width: 768px) { .cat-nav { justify-content: center; } }
-.cat-btn { flex-shrink: 0; padding: 10px 20px; border-radius: 999px; font-size: 13px; font-weight: 600; color: var(--text-secondary); border: 1px solid var(--border-light); transition: all 0.3s; }
-.cat-btn:hover { color: var(--text-primary); border-color: var(--border-strong); }
-.cat-btn.active { background: var(--text-primary); color: var(--bg-deep); border-color: var(--text-primary); }
+        /* Fade-in Animation */
+        .animate-fade-in {
+            animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
 
-.section-title { font-family: var(--font-serif); font-size: 32px; font-weight: 700; display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
-.section-title::after { content: ""; width: 60px; height: 1px; background: var(--accent-dim); }
-
-.menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 24px; }
-.card { background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.4s; position: relative; cursor: pointer; }
-.card:hover { transform: translateY(-6px); border-color: var(--border-strong); box-shadow: var(--shadow-premium); }
-.card-img-wrap { position: relative; width: 100%; aspect-ratio: 1; overflow: hidden; }
-.card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s; }
-.card:hover .card-img-wrap img { transform: scale(1.08); }
-.card-badge { position: absolute; top: 16px; left: 16px; z-index: 2; background: rgba(10, 9, 8, 0.8); color: var(--accent); border: 1px solid rgba(217, 155, 85, 0.3); padding: 4px 12px; border-radius: 999px; font-size: 10px; font-weight: 700; text-transform: uppercase; }
-.card-content { padding: 20px; display: flex; flex-direction: column; flex: 1; }
-.card-title { font-family: var(--font-serif); font-size: 20px; font-weight: 700; margin-bottom: 6px; }
-.card-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 20px; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid var(--border-light); }
-.price { font-family: var(--font-serif); font-size: 22px; font-weight: 700; color: var(--accent); }
-.btn-add { width: 40px; height: 40px; border-radius: 50%; background: var(--bg-elevated); border: 1px solid var(--border-light); display: grid; place-items: center; transition: all 0.3s; }
-.btn-add:hover { background: var(--accent); color: var(--bg-deep); transform: scale(1.1) rotate(90deg); }
-.btn-add svg { width: 18px; height: 18px; }
-
-/* Modal & Cart */
-.product-modal, .cart-overlay, .success-modal { position: fixed; inset: 0; z-index: 3000; background: rgba(10, 9, 8, 0.9); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.4s; padding: 20px; }
-.product-modal.open, .cart-overlay.open, .success-modal.open { opacity: 1; visibility: visible; }
-.product-content, .success-content { background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: 24px; width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto; transform: translateY(30px); transition: transform 0.5s var(--ease-spring); position: relative; }
-.product-modal.open .product-content, .success-modal.open .success-content { transform: translateY(0); }
-.product-close, .close-btn { position: absolute; top: 16px; right: 16px; z-index: 10; width: 36px; height: 36px; border-radius: 50%; background: rgba(10, 9, 8, 0.7); color: var(--text-primary); display: grid; place-items: center; font-size: 20px; }
-.product-img { width: 100%; height: 280px; object-fit: cover; }
-.product-body { padding: 24px; }
-.product-title { font-size: 26px; font-weight: 900; margin-bottom: 8px; }
-.product-desc { font-size: 14px; color: var(--text-secondary); }
-.product-footer { padding: 20px 24px; border-top: 1px solid var(--border-light); display: flex; gap: 16px; align-items: center; }
-.product-qty { display: flex; align-items: center; gap: 16px; background: var(--bg-deep); border: 1px solid var(--border-light); border-radius: 999px; padding: 6px; }
-.product-qty button { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--bg-elevated); }
-.product-qty span { font-size: 18px; font-weight: 700; }
-
-.cart-drawer { position: absolute; top: 0; right: 0; bottom: 0; width: 100%; max-width: 420px; background: var(--bg-surface); border-left: 1px solid var(--border-light); transform: translateX(100%); transition: transform 0.5s; display: flex; flex-direction: column; }
-.cart-overlay.open .cart-drawer { transform: translateX(0); }
-.cart-header { padding: 24px; border-bottom: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center; }
-.cart-body { flex: 1; overflow-y: auto; padding: 24px; }
-.cart-item { display: flex; gap: 16px; margin-bottom: 20px; border-bottom: 1px solid var(--border-light); padding-bottom: 20px; }
-.cart-item-img { width: 70px; height: 70px; border-radius: 12px; object-fit: cover; }
-.cart-item-info { flex: 1; }
-.cart-item-title { font-weight: 700; font-size: 16px; }
-.cart-item-price { color: var(--accent); font-weight: 700; margin-bottom: 8px; }
-.qty-controls { display: flex; align-items: center; gap: 12px; background: var(--bg-deep); border: 1px solid var(--border-light); border-radius: 999px; padding: 4px; width: fit-content; }
-.qty-btn { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; }
-.cart-footer { padding: 24px; border-top: 1px solid var(--border-light); }
-.cart-total-row { display: flex; justify-content: space-between; font-size: 20px; font-family: var(--font-serif); margin-bottom: 20px; }
-.cart-total-price { color: var(--accent); font-weight: 900; }
-
-/* Animasyonlar */
-.flying-item { position: fixed; z-index: 9999; width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); pointer-events: none; transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
-.reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
-.reveal.active { opacity: 1; transform: translateY(0); }
-.welcome-toast { position: fixed; top: 90px; left: 50%; transform: translate(-50%, -20px); background: var(--bg-surface); border: 1px solid var(--accent); padding: 12px 24px; border-radius: 999px; display: flex; align-items: center; gap: 12px; z-index: 1500; opacity: 0; visibility: hidden; transition: all 0.5s; }
-.welcome-toast.show { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
-.welcome-toast svg { color: var(--accent); width: 20px; }
-</style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
-<body>
+<body class="antialiased selection:bg-aura-gold selection:text-black">
 
-<!-- HEADER -->
-<header class="hdr">
-  <div class="hdr-in">
-    <div class="brand">
-      <div class="brand-logo">M34</div>
-      <div class="brand-text">
-        <div class="brand-name">Masa 34 Bistro</div>
-        <div class="brand-sub">Premium Ege Sofrası</div>
-      </div>
-    </div>
-    <button class="cart-btn" id="openCartBtn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-      <span>Sepetim</span>
-      <span class="cart-badge" id="cartBadge">0</span>
-    </button>
-  </div>
-</header>
+    <!-- Top Ambient Glow -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-aura-gold/5 blur-[140px] pointer-events-none z-0"></div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-arch-wrapper">
-    <video autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1544025162-8111133c14d1?w=800&h=1000&fit=crop&q=80">
-      <source src="https://videos.pexels.com/video-files/3195650/3195650-hd_1920_1080_25fps.mp4" type="video/mp4">
-    </video>
-  </div>
-  <div class="hero-content">
-    <div class="hero-label label">Ege'nin Mevsimlik Lezzetleri</div>
-    <h1>Sofranız <em>hazır.</em></h1>
-    <p>Taze malzemeler, ustalıkla hazırlanmış tabaklar ve <b>kusursuz bir akşam yemeği</b> deneyimi.</p>
-    <div class="hero-actions">
-      <a href="#menu" class="btn btn-primary">Menüyü Keşfet</a>
-    </div>
-  </div>
-</section>
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="glass-panel rounded-full px-6 py-3 flex items-center justify-between shadow-2xl">
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <span class="w-9 h-9 rounded-full bg-aura-gold/10 border border-aura-gold/30 flex items-center justify-center group-hover:border-aura-gold transition-colors">
+                        <i class="fa-solid font-serif text-aura-gold text-lg">A</i>
+                    </span>
+                    <div class="flex flex-col">
+                        <span class="font-serif tracking-[0.25em] text-lg font-bold text-white group-hover:text-aura-gold transition-colors">AURA</span>
+                        <span class="text-[9px] uppercase tracking-[0.3em] text-aura-gold/70 font-light">GASTRONOMY</span>
+                    </div>
+                </a>
 
-<!-- MENÜ -->
-<main id="menu" class="menu-section">
-  <div class="toolbar">
-    <div class="search-box">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-      <input type="text" id="searchInput" placeholder="Menüde ara...">
-    </div>
-    <nav class="cat-nav" id="catNav"></nav>
-  </div>
-  <h2 class="section-title" id="currentCatTitle">Tüm Menü</h2>
-  <div class="menu-grid" id="menuGrid"></div>
-</main>
+                <!-- Desktop Links -->
+                <div class="hidden md:flex items-center space-x-8 text-sm uppercase tracking-widest font-light text-gray-300">
+                    <a href="#about" class="hover:text-aura-gold transition-colors duration-200">Felsefe</a>
+                    <a href="#menu" class="hover:text-aura-gold transition-colors duration-200">Tadım Menüsü</a>
+                    <a href="#experience" class="hover:text-aura-gold transition-colors duration-200">Atmosfer</a>
+                    <a href="#reservation" class="hover:text-aura-gold transition-colors duration-200">Rezervasyon</a>
+                </div>
 
-<!-- ÜRÜN DETAY MODAL -->
-<div class="product-modal" id="productModal">
-  <div class="product-content">
-    <button class="product-close" id="closeProductBtn">×</button>
-    <img src="" id="modalImg" class="product-img">
-    <div class="product-body">
-      <h3 class="product-title" id="modalTitle"></h3>
-      <p class="product-desc" id="modalDesc"></p>
-    </div>
-    <div class="product-footer">
-      <div class="product-qty">
-        <button id="modalMinus">−</button>
-        <span id="modalQty">1</span>
-        <button id="modalPlus">+</button>
-      </div>
-      <button class="btn btn-primary" id="modalAddBtn" style="flex:1;">Ekle</button>
-    </div>
-  </div>
-</div>
+                <!-- Action Controls -->
+                <div class="flex items-center space-x-4">
+                    <!-- Sound Toggle Simulation -->
+                    <button id="soundToggle" class="w-10 h-10 rounded-full border border-gray-800 bg-black/40 flex items-center justify-center text-gray-400 hover:text-aura-gold hover:border-aura-gold/40 transition-all" title="Ses Efektleri">
+                        <i class="fa-solid fa-volume-high text-xs" id="soundIcon"></i>
+                    </button>
 
-<!-- SEPET ÇEKMECESİ -->
-<div class="cart-overlay" id="cartOverlay">
-  <div class="cart-drawer">
-    <div class="cart-header">
-      <h3 style="font-family:var(--font-serif); font-size:24px;">Siparişiniz</h3>
-      <button class="close-btn" id="closeCartBtn" style="position:relative; top:0; right:0;">×</button>
-    </div>
-    <div class="cart-body" id="cartBody"></div>
-    <div class="cart-footer">
-      <div class="cart-total-row"><span>Toplam</span><span class="cart-total-price" id="cartTotalPrice">₺0</span></div>
-      <button class="btn btn-primary" id="checkoutBtn" style="width:100%;" disabled>Siparişi Onayla</button>
-    </div>
-  </div>
-</div>
+                    <!-- Cart Drawer Trigger -->
+                    <button id="cartBtn" class="relative w-10 h-10 rounded-full border border-gray-800 bg-black/40 flex items-center justify-center text-gray-400 hover:text-aura-gold hover:border-aura-gold/40 transition-all">
+                        <i class="fa-solid fa-utensils text-xs"></i>
+                        <span id="cartBadge" class="hidden absolute -top-1 -right-1 w-5 h-5 bg-aura-gold text-black font-bold text-[10px] rounded-full flex items-center justify-center shadow-lg">0</span>
+                    </button>
 
-<!-- BAŞARI MODALI -->
-<div class="success-modal" id="successModal">
-  <div class="success-content" style="padding:40px; text-align:center;">
-    <div style="width:80px; height:80px; border-radius:50%; background:var(--accent-dim); color:var(--accent); display:grid; place-items:center; margin:0 auto 24px;">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:40px;"><path d="M20 6L9 17l-5-5"/></svg>
-    </div>
-    <h3 style="font-size:28px; margin-bottom:12px;">Siparişiniz Alındı</h3>
-    <p style="color:var(--text-secondary); margin-bottom:32px;">Mutfak ekibimiz hemen hazırlamaya başlıyor. Afiyet olsun!</p>
-    <button class="btn btn-primary" id="closeSuccessBtn" style="width:100%;">Menüye Dön</button>
-  </div>
-</div>
+                    <!-- Quick Reserve Button -->
+                    <a href="#reservation" class="hidden sm:inline-flex items-center px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-medium gold-gradient-bg text-black hover:opacity-95 transition-all shadow-lg shadow-aura-gold/10">
+                        Masa Ayırt
+                    </a>
 
-<div class="welcome-toast" id="welcomeToast">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9Z"/></svg>
-  <span>Masa 34 Bistro'ya Hoş Geldiniz</span>
-</div>
+                    <!-- Mobile Menu Button -->
+                    <button id="mobileMenuBtn" class="md:hidden text-gray-300 hover:text-white p-2">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
 
-<script>
-const MENU = [
-  { id: "b1", cat: "burger", name: "Klasik Ev Burgeri", desc: "Dana köftesi, cheddar, marul, domates, özel bistro sos.", price: 185, img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=600&fit=crop&q=80", badge: "Şefin Seçimi" },
-  { id: "b2", cat: "burger", name: "Truffle Burger", desc: "Dana köftesi, trüf mayonez, karamelize soğan, isli peynir.", price: 225, img: "https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&h=600&fit=crop&q=80" },
-  { id: "b3", cat: "burger", name: "Çıtır Tavuk Burger", desc: "Çıtır tavuk göğsü, coleslaw, ranch sos.", price: 165, img: "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=600&h=600&fit=crop&q=80" },
-  { id: "b4", cat: "burger", name: "Jalapeño Burger", desc: "Dana köftesi, jalapeño, pepper jack peyniri, acı mayonez.", price: 195, img: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=600&h=600&fit=crop&q=80", badge: "Acılı" },
-  { id: "p1", cat: "pizza", name: "Margherita", desc: "San Marzano domates, taze mozzarella, fesleğen.",<!DOCTYPE html>
-<html lang="tr">
+        <!-- Mobile Navigation Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden max-w-7xl mx-auto px-6 mt-2">
+            <div class="glass-panel rounded-2xl p-6 flex flex-col space-y-4 text-center tracking-widest uppercase text-sm font-light">
+                <a href="#about" class="py-2 hover:text-aura-gold transition-colors border-b border-gray-800/50">Felsefe</a>
+                <a href="#menu" class="py-2 hover:text-aura-gold transition-colors border-b border-gray-800/50">Tadım Menüsü</a>
+                <a href="#experience" class="py-2 hover:text-aura-gold transition-colors border-b border-gray-800/50">Atmosfer</a>
+                <a href="#reservation" class="py-2 text-aura-gold">Masa Rezervasyonu</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-6 overflow-hidden">
+        <!-- Background Hero Image with Dark Gradient Layer -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=2069&auto=format&fit=crop" alt="AURA Culinary Art" class="w-full h-full object-cover object-center filter brightness-[0.35] contrast-125 scale-105 transition-transform duration-10000">
+            <div class="absolute inset-0 bg-gradient-to-t from-aura-bg via-aura-bg/60 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-aura-bg/80 via-transparent to-aura-bg/80"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto text-center space-y-8 animate-fade-in">
+            <div class="inline-flex items-center space-x-3 px-4 py-1.5 rounded-full glass-panel border border-aura-gold/30 text-aura-gold text-xs tracking-[0.3em] uppercase">
+                <span class="w-1.5 h-1.5 rounded-full bg-aura-gold animate-ping"></span>
+                <span>Michelin Rehberi 2026 Seçkisi</span>
+            </div>
+
+            <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extralight tracking-tight text-white leading-none">
+                Duyuların <br>
+                <span class="italic font-normal gold-gradient-text">Simyası</span>
+            </h1>
+
+            <p class="max-w-2xl mx-auto text-gray-400 text-sm sm:text-base md:text-lg font-light leading-relaxed tracking-wide">
+                AURA, geleneksel Türk lezzet mirasını moleküler gastronomi ve çağdaş sunum teknikleriyle buluşturarak unutulmaz bir lezzet ritüeline dönüştürüyor.
+            </p>
+
+            <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#reservation" class="w-full sm:w-auto px-8 py-4 rounded-full font-medium text-xs uppercase tracking-[0.25em] gold-gradient-bg text-black hover:shadow-2xl hover:shadow-aura-gold/30 transition-all transform hover:-translate-y-0.5">
+                    Deneyimi Rezerve Et
+                </a>
+                <a href="#menu" class="w-full sm:w-auto px-8 py-4 rounded-full font-medium text-xs uppercase tracking-[0.25em] text-white glass-panel hover:border-aura-gold/50 transition-all">
+                    Menüyü Keşfet
+                </a>
+            </div>
+
+            <!-- Awards Badge Row -->
+            <div class="pt-12 grid grid-cols-2 md:grid-cols-4 gap-6 opacity-70 max-w-3xl mx-auto border-t border-gray-800/80">
+                <div class="text-center">
+                    <p class="font-serif text-2xl text-aura-gold">3 Yıldız</p>
+                    <p class="text-[10px] uppercase tracking-widest text-gray-500 mt-1">Michelin Guide</p>
+                </div>
+                <div class="text-center">
+                    <p class="font-serif text-2xl text-aura-gold">No. 14</p>
+                    <p class="text-[10px] uppercase tracking-widest text-gray-500 mt-1">World's 50 Best</p>
+                </div>
+                <div class="text-center">
+                    <p class="font-serif text-2xl text-aura-gold">4 Şapka</p>
+                    <p class="text-[10px] uppercase tracking-widest text-gray-500 mt-1">Gault & Millau</p>
+                </div>
+                <div class="text-center">
+                    <p class="font-serif text-2xl text-aura-gold">%100 Sürdürülebilir</p>
+                    <p class="text-[10px] uppercase tracking-widest text-gray-500 mt-1">Yeşil Yıldız</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Down Scroll Indicator -->
+        <a href="#about" class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-2 text-gray-500 hover:text-aura-gold transition-colors">
+            <span class="text-[10px] uppercase tracking-widest">Keşfet</span>
+            <i class="fa-solid fa-chevron-down text-xs animate-bounce"></i>
+        </a>
+    </section>
+
+    <!-- Philosophy & Chef Section -->
+    <section id="about" class="py-24 px-6 relative z-10 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <!-- Left Image Composition -->
+            <div class="lg:col-span-6 relative">
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-aura-gold/20">
+                    <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=1974&auto=format&fit=crop" alt="Executive Chef" class="w-full h-[550px] object-cover filter brightness-90">
+                    <div class="absolute inset-0 bg-gradient-to-t from-aura-bg via-transparent to-transparent"></div>
+                </div>
+                
+                <!-- Floating Overlay Card -->
+                <div class="absolute -bottom-6 -right-6 hidden sm:block p-6 glass-panel rounded-2xl max-w-xs shadow-2xl border-aura-gold/30">
+                    <i class="fa-solid fa-quote-left text-aura-gold text-2xl mb-2"></i>
+                    <p class="font-serif italic text-sm text-gray-300">
+                        "Yemek pişirmek sadece bir lezzet değil, hatıraları ve hisleri yeniden uyandırma sanatıdır."
+                    </p>
+                    <p class="text-xs font-bold text-aura-gold mt-3 tracking-wider uppercase">— Şef Aris Thorne</p>
+                </div>
+            </div>
+
+            <!-- Right Content -->
+            <div class="lg:col-span-6 space-y-6">
+                <div class="inline-flex items-center space-x-2 text-aura-gold text-xs tracking-[0.3em] uppercase">
+                    <span class="w-8 h-[1px] bg-aura-gold"></span>
+                    <span>Gastronomik Felsefe</span>
+                </div>
+
+                <h2 class="font-serif text-4xl sm:text-5xl text-white font-light leading-tight">
+                    Doğanın En Nadide Hediyeleri, <br>
+                    <span class="italic text-aura-gold">Sanatsal Bir Dokunuşla</span>
+                </h2>
+
+                <p class="text-gray-400 text-sm leading-relaxed font-light">
+                    AURA'da servis edilen her bir tabak; Ege kıyılarından toplanan taze otsulardan, Doğu Anadolu'nun yüksek yaylalarındaki özel dinlendirilmiş etlere kadar yerel üreticilerden doğrudan tedarik edilen mevsimsel hammaddelerin bir kutlamasıdır.
+                </p>
+
+                <div class="grid grid-cols-2 gap-6 pt-4">
+                    <div class="border-l border-aura-gold/30 pl-4">
+                        <h4 class="text-white font-serif text-lg">Sıfır Atık Mutfak</h4>
+                        <p class="text-xs text-gray-400 mt-1">Tüm malzemeler sürdürülebilir döngüde %100 değerlendirilir.</p>
+                    </div>
+                    <div class="border-l border-aura-gold/30 pl-4">
+                        <h4 class="text-white font-serif text-lg">Nadir Mahzen</h4>
+                        <p class="text-xs text-gray-400 mt-1">Dünyanın dört bir yanından 1.200'den fazla özel rekolte şarap.</p>
+                    </div>
+                </div>
+
+                <div class="pt-4">
+                    <a href="#menu" class="inline-flex items-center space-x-3 text-aura-gold text-xs uppercase tracking-[0.2em] hover:text-white transition-colors group">
+                        <span>Tadım Menüsüne Göz Atın</span>
+                        <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Menu Section -->
+    <section id="menu" class="py-24 px-6 relative z-10 bg-aura-bg/50">
+        <div class="max-w-7xl mx-auto space-y-12">
+            <!-- Header -->
+            <div class="text-center space-y-4 max-w-2xl mx-auto">
+                <span class="text-aura-gold text-xs tracking-[0.3em] uppercase">Özel Seçkiler</span>
+                <h2 class="font-serif text-4xl sm:text-6xl text-white font-light">AURA Lezzet Koleksiyonu</h2>
+                <p class="text-gray-400 text-sm font-light">
+                    Duyularınızı harekete geçirmek üzere tasarlanmış, mevsimsel ve sanatsal gastronomi seçkisi.
+                </p>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="flex items-center justify-center space-x-2 overflow-x-auto pb-4 no-scrollbar" id="menuFilters">
+                <button data-cat="all" class="menu-filter-btn px-6 py-2.5 rounded-full text-xs uppercase tracking-widest font-medium transition-all bg-aura-gold text-black">
+                    Tümü
+                </button>
+                <button data-cat="tasting" class="menu-filter-btn px-6 py-2.5 rounded-full text-xs uppercase tracking-widest font-medium transition-all glass-panel text-gray-400 hover:text-white">
+                    Tadım Menüsü
+                </button>
+                <button data-cat="mains" class="menu-filter-btn px-6 py-2.5 rounded-full text-xs uppercase tracking-widest font-medium transition-all glass-panel text-gray-400 hover:text-white">
+                    Ana Yemekler
+                </button>
+                <button data-cat="mixology" class="menu-filter-btn px-6 py-2.5 rounded-full text-xs uppercase tracking-widest font-medium transition-all glass-panel text-gray-400 hover:text-white">
+                    Miksoloji & Kokteyl
+                </button>
+                <button data-cat="desserts" class="menu-filter-btn px-6 py-2.5 rounded-full text-xs uppercase tracking-widest font-medium transition-all glass-panel text-gray-400 hover:text-white">
+                    Tatlılar
+                </button>
+            </div>
+
+            <!-- Menu Grid Container -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="menuGrid">
+                <!-- Dynamic Items Inserted via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Ambiance / Dining Areas Section -->
+    <section id="experience" class="py-24 px-6 relative z-10 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto space-y-12">
+            <div class="flex flex-col md:flex-row md:items-end justify-between">
+                <div class="space-y-3">
+                    <span class="text-aura-gold text-xs tracking-[0.3em] uppercase">Mekân & Atmosfer</span>
+                    <h2 class="font-serif text-4xl sm:text-5xl text-white font-light">Farklı Duyusal Alanlar</h2>
+                </div>
+                <p class="text-gray-400 text-sm font-light max-w-md mt-4 md:mt-0">
+                    Her ziyaretinizde farklı bir ruh halini yaşayabilmeniz için özel olarak mimari konseptlendirilmiş 4 ayrı salon.
+                </p>
+            </div>
+
+            <!-- Ambiances Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="glass-card rounded-2xl overflow-hidden group cursor-pointer" onclick="selectAreaForReservation('Main Dining Room')">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop" alt="Ana Salon" c```html
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#0a0908">
-<title>Masa 34 Bistro — Premium Ege Sofrası</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-/* =========================================
-   1. TEMEL AYARLAR VE RENK PALETİ
-   ========================================= */
-:root{
-  --bg-deep: #0a0908;      
-  --bg-surface: #14110f;   
-  --bg-elevated: #1c1714;  
-  
-  --text-primary: #f5f0e6; 
-  --text-secondary: #a69b8d; 
-  --text-muted: #6b6156;   
-  
-  --accent: #d99b55;       
-  --accent-hover: #e8b072;
-  --accent-dim: rgba(217, 155, 85, 0.15);
-  
-  --border-light: rgba(245, 240, 230, 0.08);
-  --border-strong: rgba(245, 240, 230, 0.15);
-  --shadow-premium: 0 10px 40px rgba(0,0,0,0.7);
-  
-  --font-serif: "Fraunces", Georgia, serif;
-  --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA Gastronomi & Duyusal Deneyim</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        aura: {
+                            bg: '#0A0A0C',
+                            card: '#121216',
+                            cardBorder: 'rgba(212, 175, 55, 0.15)',
+                            gold: '#D4AF37',
+                            goldLight: '#F3E5AB',
+                            goldDark: '#997A15',
+                            textMuted: '#8E8E93',
+                            surface: '#1A1A22'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #0A0A0C;
+            color: #E5E5EA;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
 
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-html { scroll-behavior: smooth; }
-body { font-family: var(--font-sans); background-color: var(--bg-deep); color: var(--text-primary); line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-body.lock { overflow: hidden; }
-img, video, svg { display: block; max-width: 100%; }
-button, input { font: inherit; color: inherit; background: none; border: 0; }
-button { cursor: pointer; }
-a { color: inherit; text-decoration: none; }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0A0C;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2A2A35;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
 
-body::after {
-  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 9999;
-  opacity: 0.03; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); mix-blend-mode: screen;
-}
+        /* Glassmorphism */
+        .glass-panel {
+            background: rgba(18, 18, 22, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.12);
+        }
 
-h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 700; line-height: 1.1; }
-h1 { font-size: clamp(48px, 12vw, 90px); font-weight: 900; letter-spacing: -0.03em; }
-em { font-style: italic; color: var(--accent); font-weight: 400; }
-.label { font-family: var(--font-sans); font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); }
+        .glass-card {
+            background: linear-gradient(135deg, rgba(25, 25, 32, 0.6) 0%, rgba(14, 14, 18, 0.8) 100%);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600; font-size: 14px; padding: 14px 28px; border-radius: 999px; transition: all 0.3s; }
-.btn-primary { background: var(--accent); color: var(--bg-deep); box-shadow: 0 4px 15px var(--accent-dim); }
-.btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); }
+        .glass-card:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.8), 0 0 20px 0 rgba(212, 175, 55, 0.1);
+        }
 
-/* Header */
-.hdr { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10, 9, 8, 0.7); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-light); }
-.hdr-in { max-width: 1200px; margin: 0 auto; height: 72px; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
-.brand { display: flex; align-items: center; gap: 14px; }
-.brand-logo { width: 42px; height: 42px; border-radius: 50%; background: var(--accent); color: var(--bg-deep); display: grid; place-items: center; font-family: var(--font-serif); font-weight: 900; font-size: 15px; }
-.brand-name { font-family: var(--font-serif); font-size: 18px; font-weight: 700; line-height: 1.1; }
-.brand-sub { font-size: 10px; color: var(--text-secondary); letter-spacing: 0.15em; text-transform: uppercase; }
+        /* Gold Gradient Text */
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF5C0 0%, #D4AF37 50%, #AA7C11 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-.cart-btn { display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-light); padding: 10px 20px; border-radius: 999px; font-weight: 600; font-size: 14px; position: relative; transition: all 0.3s; }
-.cart-btn:hover { border-color: var(--accent); }
-.cart-btn svg { width: 18px; height: 18px; color: var(--accent); }
-.cart-badge { position: absolute; top: -6px; right: -6px; background: var(--accent); color: var(--bg-deep); width: 22px; height: 22px; border-radius: 50%; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; border: 2px solid var(--bg-deep); transform: scale(0); transition: transform 0.3s var(--ease-spring); }
-.cart-badge.show { transform: scale(1); }
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+        }
 
-/* Hero */
-.hero { position: relative; min-height: 100vh; display: flex; align-items: center; padding: 120px 24px 60px; overflow: hidden; }
-.hero-arch-wrapper { position: absolute; top: 50%; right: -10%; transform: translateY(-45%); width: 100%; max-width: 800px; height: 90vh; max-height: 900px; z-index: 0; border-top-left-radius: 50vw; border-top-right-radius: 50vw; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; overflow: hidden; border: 1px solid var(--border-strong); opacity: 0.65; box-shadow: var(--shadow-premium); }
-@media(min-width: 900px) { .hero-arch-wrapper { right: 5%; opacity: 0.8; } }
-.hero-arch-wrapper video { width: 100%; height: 100%; object-fit: cover; }
-.hero-arch-wrapper::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, var(--bg-deep) 100%); }
-.hero-content { position: relative; z-index: 2; max-width: 800px; width: 100%; margin: 0 auto; }
-@media(min-width: 900px) { .hero-content { margin: 0; margin-left: 5%; } }
-.hero-label { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 24px; animation: fadeUp 0.8s forwards; opacity: 0; }
-.hero-label::before { content: ""; width: 30px; height: 1px; background: var(--accent); }
-.hero h1 { margin-bottom: 24px; animation: fadeUp 0.8s 0.1s forwards; opacity: 0; }
-.hero h1 em { display: block; font-size: 0.9em; margin-top: 4px; }
-.hero p { font-size: clamp(16px, 2vw, 18px); color: var(--text-secondary); max-width: 460px; line-height: 1.6; margin-bottom: 40px; animation: fadeUp 0.8s 0.2s forwards; opacity: 0; }
-.hero p b { color: var(--text-primary); font-weight: 600; }
-.hero-actions { animation: fadeUp 0.8s 0.3s forwards; opacity: 0; }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-@media(max-width: 767px) {
-  .hero { padding-top: 100px; align-items: flex-start; min-height: 90vh; }
-  .hero-arch-wrapper { top: 10%; right: 50%; transform: translateX(50%); width: 90vw; height: 60vh; opacity: 0.4; }
-  .hero-content { margin-top: 40px; text-align: center; }
-  .hero-label::before { display: none; }
-  .hero p { margin: 0 auto 32px; }
-}
+        .gold-gradient-bg-hover:hover {
+            background: linear-gradient(135deg, #E6C687 0%, #D4AF37 100%);
+        }
 
-/* Menu */
-.menu-section { max-width: 1200px; margin: 0 auto; padding: 60px 24px 120px; background: var(--bg-deep); position: relative; z-index: 10; }
-.toolbar { position: sticky; top: 72px; z-index: 50; background: rgba(10, 9, 8, 0.85); backdrop-filter: blur(12px); padding: 16px 0; border-bottom: 1px solid var(--border-light); margin-bottom: 40px; display: flex; flex-direction: column; gap: 16px; }
-.search-box { position: relative; max-width: 400px; width: 100%; margin: 0 auto; }
-.search-box input { width: 100%; padding: 14px 20px 14px 48px; background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: 999px; font-size: 15px; }
-.search-box input:focus { border-color: var(--accent); outline: none; }
-.search-box svg { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--text-muted); }
+        /* Custom Shimmer Animation */
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .shimmer-bg {
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(212,175,55,0.08) 50%, rgba(255,255,255,0) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite;
+        }
 
-.cat-nav { display: flex; gap: 12px; overflow-x: auto; padding: 4px 0; justify-content: flex-start; scrollbar-width: none; }
-@media(min-width: 768px) { .cat-nav { justify-content: center; } }
-.cat-btn { flex-shrink: 0; padding: 10px 20px; border-radius: 999px; font-size: 13px; font-weight: 600; color: var(--text-secondary); border: 1px solid var(--border-light); transition: all 0.3s; }
-.cat-btn:hover { color: var(--text-primary); border-color: var(--border-strong); }
-.cat-btn.active { background: var(--text-primary); color: var(--bg-deep); border-color: var(--text-primary); }
+        /* Fade-in Animation */
+        .animate-fade-in {
+            animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
 
-.section-title { font-family: var(--font-serif); font-size: 32px; font-weight: 700; display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
-.section-title::after { content: ""; width: 60px; height: 1px; background: var(--accent-dim); }
-
-.menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 24px; }
-.card { background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.4s; position: relative; cursor: pointer; }
-.card:hover { transform: translateY(-6px); border-color: var(--border-strong); box-shadow: var(--shadow-premium); }
-.card-img-wrap { position: relative; width: 100%; aspect-ratio: 1; overflow: hidden; }
-.card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s; }
-.card:hover .card-img-wrap img { transform: scale(1.08); }
-.card-badge { position: absolute; top: 16px; left: 16px; z-index: 2; background: rgba(10, 9, 8, 0.8); color: var(--accent); border: 1px solid rgba(217, 155, 85, 0.3); padding: 4px 12px; border-radius: 999px; font-size: 10px; font-weight: 700; text-transform: uppercase; }
-.card-content { padding: 20px; display: flex; flex-direction: column; flex: 1; }
-.card-title { font-family: var(--font-serif); font-size: 20px; font-weight: 700; margin-bottom: 6px; }
-.card-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 20px; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid var(--border-light); }
-.price { font-family: var(--font-serif); font-size: 22px; font-weight: 700; color: var(--accent); }
-.btn-add { width: 40px; height: 40px; border-radius: 50%; background: var(--bg-elevated); border: 1px solid var(--border-light); display: grid; place-items: center; transition: all 0.3s; }
-.btn-add:hover { background: var(--accent); color: var(--bg-deep); transform: scale(1.1) rotate(90deg); }
-.btn-add svg { width: 18px; height: 18px; }
-
-/* Modal & Cart */
-.product-modal, .cart-overlay, .success-modal { position: fixed; inset: 0; z-index: 3000; background: rgba(10, 9, 8, 0.9); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.4s; padding: 20px; }
-.product-modal.open, .cart-overlay.open, .success-modal.open { opacity: 1; visibility: visible; }
-.product-content, .success-content { background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: 24px; width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto; transform: translateY(30px); transition: transform 0.5s var(--ease-spring); position: relative; }
-.product-modal.open .product-content, .success-modal.open .success-content { transform: translateY(0); }
-.product-close, .close-btn { position: absolute; top: 16px; right: 16px; z-index: 10; width: 36px; height: 36px; border-radius: 50%; background: rgba(10, 9, 8, 0.7); color: var(--text-primary); display: grid; place-items: center; font-size: 20px; }
-.product-img { width: 100%; height: 280px; object-fit: cover; }
-.product-body { padding: 24px; }
-.product-title { font-size: 26px; font-weight: 900; margin-bottom: 8px; }
-.product-desc { font-size: 14px; color: var(--text-secondary); }
-.product-footer { padding: 20px 24px; border-top: 1px solid var(--border-light); display: flex; gap: 16px; align-items: center; }
-.product-qty { display: flex; align-items: center; gap: 16px; background: var(--bg-deep); border: 1px solid var(--border-light); border-radius: 999px; padding: 6px; }
-.product-qty button { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--bg-elevated); }
-.product-qty span { font-size: 18px; font-weight: 700; }
-
-.cart-drawer { position: absolute; top: 0; right: 0; bottom: 0; width: 100%; max-width: 420px; background: var(--bg-surface); border-left: 1px solid var(--border-light); transform: translateX(100%); transition: transform 0.5s; display: flex; flex-direction: column; }
-.cart-overlay.open .cart-drawer { transform: translateX(0); }
-.cart-header { padding: 24px; border-bottom: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center; }
-.cart-body { flex: 1; overflow-y: auto; padding: 24px; }
-.cart-item { display: flex; gap: 16px; margin-bottom: 20px; border-bottom: 1px solid var(--border-light); padding-bottom: 20px; }
-.cart-item-img { width: 70px; height: 70px; border-radius: 12px; object-fit: cover; }
-.cart-item-info { flex: 1; }
-.cart-item-title { font-weight: 700; font-size: 16px; }
-.cart-item-price { color: var(--accent); font-weight: 700; margin-bottom: 8px; }
-.qty-controls { display: flex; align-items: center; gap: 12px; background: var(--bg-deep); border: 1px solid var(--border-light); border-radius: 999px; padding: 4px; width: fit-content; }
-.qty-btn { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; }
-.cart-footer { padding: 24px; border-top: 1px solid var(--border-light); }
-.cart-total-row { display: flex; justify-content: space-between; font-size: 20px; font-family: var(--font-serif); margin-bottom: 20px; }
-.cart-total-price { color: var(--accent); font-weight: 900; }
-
-/* Animasyonlar */
-.flying-item { position: fixed; z-index: 9999; width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); pointer-events: none; transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
-.reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
-.reveal.active { opacity: 1; transform: translateY(0); }
-.welcome-toast { position: fixed; top: 90px; left: 50%; transform: translate(-50%, -20px); background: var(--bg-surface); border: 1px solid var(--accent); padding: 12px 24px; border-radius: 999px; display: flex; align-items: center; gap: 12px; z-index: 1500; opacity: 0; visibility: hidden; transition: all 0.5s; }
-.welcome-toast.show { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
-.welcome-toast svg { color: var(--accent); width: 20px; }
-</style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
-<body>
+<body class="antialiased selection:bg-aura-gold selection:text-black">
 
-<!-- HEADER -->
-<header class="hdr">
-  <div class="hdr-in">
-    <div class="brand">
-      <div class="brand-logo">M34</div>
-      <div class="brand-text">
-        <div class="brand-name">Masa 34 Bistro</div>
-        <div class="brand-sub">Premium Ege Sofrası</div>
-      </div>
-    </div>
-    <button class="cart-btn" id="openCartBtn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-      <span>Sepetim</span>
-      <span class="cart-badge" id="cartBadge">0</span>
-    </button>
-  </div>
-</header>
+    <!-- Top Ambient Glow -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-aura-gold/5 blur-[140px] pointer-events-none z-0"></div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-arch-wrapper">
-    <video autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1544025162-8111133c14d1?w=800&h=1000&fit=crop&q=80">
-      <source src="https://videos.pexels.com/video-files/3195650/3195650-hd_1920_1080_25fps.mp4" type="video/mp4">
-    </video>
-  </div>
-  <div class="hero-content">
-    <div class="hero-label label">Ege'nin Mevsimlik Lezzetleri</div>
-    <h1>Sofranız <em>hazır.</em></h1>
-    <p>Taze malzemeler, ustalıkla hazırlanmış tabaklar ve <b>kusursuz bir akşam yemeği</b> deneyimi.</p>
-    <div class="hero-actions">
-      <a href="#menu" class="btn btn-primary">Menüyü Keşfet</a>
-    </div>
-  </div>
-</section>
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="glass-panel rounded-full px-6 py-3 flex items-center justify-between shadow-2xl">
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <span class="w-9 h-9 rounded-full bg-aura-gold/10 border border-aura-gold/30 flex items-center justify-center group-hover:border-aura-gold transition-colors">
+                        <i class="fa-solid font-serif text-aura-gold text-lg">A</i>
+                    </span>
+                    <div class="flex flex-col">
+                        <span class="font-serif tracking-[0.25em] text-lg font-bold text-white group-hover:text-aura-gold transition-colors">AURA</span>
+                        <span class="text-[9px] uppercase tracking-[0.3em] text-aura-gold/70 font-light">GASTRONOMY</span>
+                    </div>
+                </a>
 
-<!-- MENÜ -->
-<main id="menu" class="menu-section">
-  <div class="toolbar">
-    <div class="search-box">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-      <input type="text" id="searchInput" placeholder="Menüde ara...">
-    </div>
-    <nav class="cat-nav" id="catNav"></nav>
-  </div>
-  <h2 class="section-title" id="currentCatTitle">Tüm Menü</h2>
-  <div class="menu-grid" id="menuGrid"></div>
-</main>
+                <!-- Desktop Links -->
+                <div class="hidden md:flex items-center space-x-8 text-sm uppercase tracking-widest font-light text-gray-300">
+                    <a href="#about" class="hover:text-aura-gold transition-colors duration-200">Felsefe</a>
+                    <a href="#menu" class="hover:text-aura-gold transition-colors duration-200">Tadım Menüsü</a>
+                    <a href="#experience" class="hover:text-aura-gold transition-colors duration-200">Atmosfer</a>
+                    <a href="#reservation" class="hover:text-aura-gold transition-colors duration-200">Rezervasyon</a>
+                </div>
 
-<!-- ÜRÜN DETAY MODAL -->
-<div class="product-modal" id="productModal">
-  <div class="product-content">
-    <button class="product-close" id="closeProductBtn">×</button>
-    <img src="" id="modalImg" class="product-img">
-    <div class="product-body">
-      <h3 class="product-title" id="modalTitle"></h3>
-      <p class="product-desc" id="modalDesc"></p>
-    </div>
-    <div class="product-footer">
-      <div class="product-qty">
-        <button id="modalMinus">−</button>
-        <span id="modalQty">1</span>
-        <button id="modalPlus">+</button>
-      </div>
-      <button class="btn btn-primary" id="modalAddBtn" style="flex:1;">Ekle</button>
-    </div>
-  </div>
-</div>
+                <!-- Action Controls -->
+                <div class="flex items-center space-x-4">
+                    <!-- Sound Toggle Simulation -->
+                    <button id="soundToggle" class="w-10 h-10 rounded-full border border-gray-800 bg-black/40 flex items-center justify-center text-gray-400 hover:text-aura-gold hover:border-aura-gold/40 transition-all" title="Ses Efektleri">
+                        <i class="fa-solid fa-volume-high text-xs" id="soundIcon"></i>
+                    </button>
 
-<!-- SEPET ÇEKMECESİ -->
-<div class="cart-overlay" id="cartOverlay">
-  <div class="cart-drawer">
-    <div class="cart-header">
-      <h3 style="font-family:var(--font-serif); font-size:24px;">Siparişiniz</h3>
-      <button class="close-btn" id="closeCartBtn" style="position:relative; top:0; right:0;">×</button>
-    </div>
-    <div class="cart-body" id="cartBody"></div>
-    <div class="cart-footer">
-      <div class="cart-total-row"><span>Toplam</span><span class="cart-total-price" id="cartTotalPrice">₺0</span></div>
-      <button class="btn btn-primary" id="checkoutBtn" style="width:100%;" disabled>Siparişi Onayla</button>
-    </div>
-  </div>
-</div>
+                    <!-- Cart Drawer Trigger -->
+                    <button id="cartBtn" class="relative w-10 h-10 rounded-full border border-gray-800 bg-black/40 flex items-center justify-center text-gray-400 hover:text-aura-gold hover:border-aura-gold/40 transition-all">
+                        <i class="fa-solid fa-utensils text-xs"></i>
+                        <span id="cartBadge" class="hidden absolute -top-1 -right-1 w-5 h-5 bg-aura-gold text-black font-bold text-[10px] rounded-full flex items-center justify-center shadow-lg">0</span>
+                    </button>
 
-<!-- BAŞARI MODALI -->
-<div class="success-modal" id="successModal">
-  <div class="success-content" style="padding:40px; text-align:center;">
-    <div style="width:80px; height:80px; border-radius:50%; background:var(--accent-dim); color:var(--accent); display:grid; place-items:center; margin:0 auto 24px;">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:40px;"><path d="M20 6L9 17l-5-5"/></svg>
-    </div>
-    <h3 style="font-size:28px; margin-bottom:12px;">Siparişiniz Alındı</h3>
-    <p style="color:var(--text-secondary); margin-bottom:32px;">Mutfak ekibimiz hemen hazırlamaya başlıyor. Afiyet olsun!</p>
-    <button class="btn btn-primary" id="closeSuccessBtn" style="width:100%;">Menüye Dön</button>
-  </div>
-</div>
+                    <!-- Quick Reserve Button -->
+                    <a href="#reservation" class="hidden sm:inline-flex items-center px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-medium gold-gradient-bg text-black hover:opacity-95 transition-all shadow-lg shadow-aura-gold/10">
+                        Masa Ayırt
+                    </a>
 
-<div class="welcome-toast" id="welcomeToast">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9Z"/></svg>
-  <span>Masa 34 Bistro'ya Hoş Geldiniz</span>
-</div>
-
-<script>
-const MENU = [
-  { id: "b1", cat: "burger", name: "Klasik Ev Burgeri", desc: "Dana köftesi, cheddar, marul, domates, özel bistro sos.", price: 185, img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=600&fit=crop&q=80", badge: "Şefin Seçimi" },
-  { id: "b2", cat: "burger", name: "Truffle Burger", desc: "Dana köftesi, trüf mayonez, karamelize soğan, isli peynir.", price: 225, img: "https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&h=600&fit=crop&q=80" },
-  { id: "b3", cat: "burger", name: "Çıtır Tavuk Burger", desc: "Çıtır tavuk göğsü, coleslaw, ranch sos.", price: 165, img: "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=600&h=600&fit=crop&q=80" },
-  { id: "b4", cat: "burger", name: "Jalapeño Burger", desc: "Dana köftesi, jalapeño, pepper jack peyniri, acı mayonez.", price: 195, img: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=600&h=600&fit=crop&q=80", badge: "Acılı" },
-  { id: "p1", cat: "pizza", name: "Margherita", desc: "San Marzano domates, taze mozzarella, fesleğen.", price: 175, img: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600&h=600&fit=crop&q=80" },
-  { id: "p2", cat: "pizza", name: "Pepperoni", desc: "Mozzarella, dana pepperoni, kekik.", price: 205, img: "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=600&h=600&fit=crop&q=80", badge: "Şefin Seçimi" },
-  { id: "p3", cat: "pizza", name: "Penne Arrabbiata", desc: "Acılı domates sosu, sarımsak, maydanoz.", price: 155, img: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=600&h=600&fit=crop&q=80" },
-  { id: "p4", cat: "pizza", name: "Fettuccine Alfredo", desc: "Krema, parmesan, tereyağı, karabiber.", price: 175, img: "https://images.unsplash.com/photo-1645112411341-6c4fd023714a?w=600&h=600&fit=crop&q=80" },
-  { id: "s1", cat: "salata", name: "Sezar Salata", desc: "Marul, çıtır tavuk, parmesan, kruton, sezar sos.", price: 145, img: "https://images.unsplash.com/photo-1550304943-4f24f54ddde9?w=600&h=600&fit=crop&q=80" },
-  { id: "s2", cat: "salata", name: "Akdeniz Salata", desc: "Roka, domates, zeytin, nar ekşisi, zeytinyağı.", price: 130, img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&h=600&fit=crop&q=80", badge: "Vegan" },
-  { id: "s3", cat: "salata", name: "Kinoa Bowl", desc: "Kinoa, avokado, nohut, ıspanak, limonlu sos.", price: 160, img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&h=600&fit=crop&q=80" },
-  { id: "a1", cat: "baslangic", name: "Patates Kızartması", desc: "Baharatlı, ev yapımı ketçap ile.", price: 75, img: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&h=600&fit=crop&q=80" },
-  { id: "a2", cat: "baslangic", name: "Soğan Halkası", desc: "Çıtır kaplama, barbekü sos.", price: 85, img: "https://images.unsplash.com/photo-1639024471283-03518883512d?w=600&h=600&fit=crop&q=80" },
-  { id: "a3", cat: "baslangic", name: "Çıtır Tavuk", desc: "Altı parça, bal hardallı sos.", price: 120, img: "https://images.unsplash.com/photo-1562967914-608f82629710?w=600&h=600&fit=crop&q=80" },
-  { id: "a4", cat: "baslangic", name: "Humus Tabağı", desc: "Nohut püresi, tahin, zeytinyağı.", price: 95, img: "https://images.unsplash.com/photo-1610614819513-58e34989848b?w=600&h=600&fit=crop&q=80" },
-  { id: "t1", cat: "tatli", name: "San Sebastian", desc: "Yanık yüzeyli, kremsi, orman meyveli sos.", price: 135, img: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=600&h=600&fit=crop&q=80", badge: "Şefin Seçimi" },
-  { id: "t2", cat: "tatli", name: "Sıcak Sufle", desc: "Akışkan çikolata kalbi, vanilyalı dondurma.", price: 125, img: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&h=600&fit=crop&q=80" },
-  { id: "t3", cat: "tatli", name: "Tiramisu", desc: "Mascarpone, espresso, kakao.", price: 130, img: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600&h=600&fit=crop&q=80" },
-  { id: "i1", cat: "icecek", name: "Ev Yapımı Limonata", desc: "Taze nane, buz.", price: 55, img: "https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=600&h=600&fit=crop&q=80" },
-  { id: "i2", cat: "icecek", name: "Ayran", desc: "Soğuk, köpüklü.", price: 30, img: "https://images.unsplash.com/photo-1571950006418-84541e1c4d25?w=600&h=600&fit=crop&q=80" },
-  { id: "i3", cat: "icecek", name: "Kola", desc: "33 cl.", price: 40, img: "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=600&h=600&fit=crop&q=80" },
-  { id: "i4", cat: "icecek", name: "Türk Kahvesi", desc: "Közde, lokum ile.", price: 50, img: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=600&h=600&fit=crop&q=80" },
-  { id: "i5", cat: "icecek", name: "Filtre Kahve", desc: "Günün çekirdeği.", price: 60, img: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&h=600&fit=crop&q=80" },
-  { id: "i6", cat: "icecek", name: "Soğuk Çay", desc: "Şeftali veya limon.", price: 45, img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&h=600&fit=crop&q=80" }
-];
-
-const CATS = [
-  { id: "all", name: "Tümü" }, { id: "burger", name: "Burgerler" }, { id: "pizza", name: "Pizza & Makarna" },
-  { id: "salata", name: "Salatalar" }, { id: "baslangic", name: "Başlangıçlar" }, { id: "tatli", name: "Tatlılar" }, { id: "icecek", name: "İçecekler" }
-];
-
-let cart = {};
-let currentCat = "all";
-let searchQuery = "";
-let currentProduct = null;
-let modalQty = 1;
-
-const catNav = document.getElementById("catNav");
-const menuGrid = document.getElementById("menuGrid");
-const searchInput = document.getElementById("searchInput");
-const productModal = document.getElementById("productModal");
-const cartOverlay = document.getElementById("cartOverlay");
-const cartBadge = document.getElementById("cartBadge");
-const cartBody = document.getElementById("cartBody");
-const cartTotalPrice = document.getElementById("cartTotalPrice");
-const checkoutBtn = document.getElementById("checkoutBtn");
-
-const formatPrice = (num) => "₺" + num.toLocaleString("tr-TR");
-
-function renderCategories() {
-  catNav.innerHTML = CATS.map(cat => `<button class="cat-btn ${cat.id === currentCat ? 'active' : ''}" data-id="${cat.id}">${cat.name}</button>`).join("");
-  document.querySelectorAll(".cat-btn").forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      currentCat = e.target.dataset.id;
-      document.getElementById("currentCatTitle").textContent = CATS.find(c => c.id === currentCat).name;
-      renderCategories(); renderMenu();
-    });
-  });
-}
-
-function renderMenu() {
-  const filtered = MENU.filter(item => {
-    const matchCat = currentCat === "all" || item.cat === currentCat;
-    const matchSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchCat && matchSearch;
-  });
-
-  if (filtered.length === 0) {
-    menuGrid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:40px; color:var(--text-muted);">Ürün bulunamadı.</div>`;
-    return;
-  }
-
-  menuGrid.innerHTML = filtered.map(item => `
-    <div class="card reveal" onclick="openProductModal('${item.id}')">
-      <div class="card-img-wrap">
-        ${item.badge ? `<div class="card-badge">${item.badge}</div>` : ""}
-        <img src="${item.img}" alt="${item.name}" loading="lazy">
-      </div>
-      <div class="card-content">
-        <h3 class="card-title">${item.name}</h3>
-        <p class="card-desc">${item.desc}</p>
-        <div class="card-footer">
-          <div class="price"><small>₺</small>${item.price}</div>
-          <button class="btn-add" onclick="event.stopPropagation(); flyToCart(event, '${item.img}', '${item.id}')">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          </button>
+                    <!-- Mobile Menu Button -->
+                    <button id="mobileMenuBtn" class="md:hidden text-gray-300 hover:text-white p-2">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  `).join("");
-  observeReveal();
-}
 
-function observeReveal() {
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add("active"); observer.unobserve(entry.target); } });
-  }, { threshold: 0.1 });
-  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
-}
-
-window.openProductModal = function(id) {
-  currentProduct = MENU.find(m => m.id === id);
-  modalQty = 1;
-  document.getElementById("modalImg").src = currentProduct.img;
-  document.getElementById("modalTitle").textContent = currentProduct.name;
-  document.getElementById("modalDesc").textContent = currentProduct.desc;
-  document.getElementById("modalQty").textContent = modalQty;
-  updateModalPrice();
-  productModal.classList.add("open");
-  document.body.classList.add("lock");
-};
-
-function updateModalPrice() {
-  document.getElementById("modalAddBtn").textContent = `Sepete Ekle · ${formatPrice(currentProduct.price * modalQty)}`;
-}
-
-document.getElementById("closeProductBtn").onclick = () => { productModal.classList.remove("open"); document.body.classList.remove("lock"); };
-document.getElementById("modalMinus").onclick = () => { if(modalQty > 1) { modalQty--; document.getElementById("modalQty").textContent = modalQty; updateModalPrice(); } };
-document.getElementById("modalPlus").onclick = () => { if(modalQty < 20) { modalQty++; document.getElementById("modalQty").textContent = modalQty; updateModalPrice(); } };
-
-document.getElementById("modalAddBtn").onclick = (e) => {
-  cart[currentProduct.id] = (cart[currentProduct.id] || 0) + modalQty;
-  updateCart();
-  productModal.classList.remove("open");
-  document.body.classList.remove("lock");
-  // Modal'dan sepete uçur
-  const rect = e.target.getBoundingClientRect();
-  flyToCart({ clientX: rect.left, clientY: rect.top }, currentProduct.img, currentProduct.id);
-};
-
-window.flyToCart = function(e, imgSrc, id) {
-  if(!e.clientX) return;
-  // Sepete ekle
-  if(e.type === "click" || !e.target) { // Direkt ekle butonundan geldiyse
-    cart[id] = (cart[id] || 0) + 1;
-    updateCart();
-  }
-
-  const flyingImg = document.createElement("img");
-  flyingImg.src = imgSrc;
-  flyingImg.className = "flying-item";
-  flyingImg.style.left = e.clientX + "px";
-  flyingImg.style.top = e.clientY + "px";
-  document.body.appendChild(flyingImg);
-
-  const cartRect = document.getElementById("openCartBtn").getBoundingClientRect();
-  
-  requestAnimationFrame(() => {
-    flyingImg.style.left = cartRect.left + 20 + "px";
-    flyingImg.style.top = cartRect.top + 10 + "px";
-    flyingImg.style.transform = "scale(0.2)";
-    flyingImg.style.opacity = "0.5";
-  });
-
-  setTimeout(() => { flyingImg.remove(); }, 800);
-};
-
-function updateCart() {
-  const totalItems = Object.values(cart).reduce((a, b) => a + b, 0);
-  cartBadge.textContent = totalItems;
-  if(totalItems > 0) { cartBadge.classList.add("show"); checkoutBtn.disabled = false; } 
-  else { cartBadge.classList.remove("show"); checkoutBtn.disabled = true; }
-
-  let totalPrice = 0;
-  let html = "";
-  Object.keys(cart).forEach(id => {
-    const item = MENU.find(m => m.id === id);
-    const qty = cart[id];
-    totalPrice += item.price * qty;
-    html += `
-      <div class="cart-item">
-        <img src="${item.img}" class="cart-item-img">
-        <div class="cart-item-info">
-          <div class="cart-item-title">${item.name}</div>
-          <div class="cart-item-price">${formatPrice(item.price)}</div>
-          <div class="qty-controls">
-            <button class="qty-btn" onclick="changeQty('${id}', -1)">−</button>
-            <span class="qty-num">${qty}</span>
-            <button class="qty-btn" onclick="changeQty('${id}', 1)">+</button>
-          </div>
+        <!-- Mobile Navigation Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden max-w-7xl mx-auto px-6 mt-2">
+            <div class="glass-panel rounded-2xl p-6 flex flex-col space-y-4 text-center tracking-widest uppercase text-sm font-light">
+                <a href="#about" class="py-2 hover:text-aura-gold transition-colors border-b border-gray-800/50">Felsefe</a>
+                <a href="#menu" class="py-2 hover:text-aura-gold transition-colors border-b border-gray-800/50">Tadım Menüsü</a>
+                <a href="#experience" class="py-2 hover:text-aura-gold transition-colors border-b border-gray-800/50">Atmosfer</a>
+                <a href="#reservation" class="py-2 text-aura-gold">Masa Rezervasyonu</a>
+            </div>
         </div>
-      </div>`;
-  });
+    </nav>
 
-  if(totalItems === 0) html = `<div style="text-align:center; padding:40px; color:var(--text-muted);">Sepetiniz boş.</div>`;
-  cartBody.innerHTML = html;
-  cartTotalPrice.textContent = formatPrice(totalPrice);
-}
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-6 overflow-hidden">
+        <!-- Background Hero Image with Dark Gradient Layer -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=2069&auto=format&fit=crop" alt="AURA Culinary Art" class="w-full h-full object-cover object-center filter brightness-[0.35] contrast-125 scale-105 transition-transform duration-10000">
+            <div class="absolute inset-0 bg-gradient-to-t from-aura-bg via-aura-bg/60 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-aura-bg/80 via-transparent to-aura-bg/80"></div>
+        </div>
 
-window.changeQty = function(id, delta) {
-  if(!cart[id]) return;
-  cart[id] += delta;
-  if(cart[id] <= 0) delete cart[id];
-  updateCart();
-};
+        <div class="relative z-10 max-w-5xl mx-auto text-center space-y-8 animate-fade-in">
+            <div class="inline-flex items-center space-x-3 px-4 py-1.5 rounded-full glass-panel border border-aura-gold/30 text-aura-gold text-xs tracking-[0.3em] uppercase">
+                <span class="w-1.5 h-1.5 rounded-full bg-aura-gold animate-ping"></span>
+                <span>Michelin Rehberi 2026 Seçkisi</span>
+            </div>
 
-// Event Listeners
-searchInput.addEventListener("input", (e) => { searchQuery = e.target.value; renderMenu(); });
-document.getElementById("openCartBtn").onclick = () => { cartOverlay.classList.add("open"); document.body.classList.add("lock"); };
-document.getElementById("closeCartBtn").onclick = () => { cartOverlay.classList.remove("open"); document.body.classList.remove("lock"); };
-document.getElementById("checkoutBtn").onclick = () => {
-  checkoutBtn.textContent = "İşleniyor..."; checkoutBtn.disabled = true;
-  setTimeout(() => {
-    cartOverlay.classList.remove("open"); document.getElementById("successModal").classList.add("open");
-    cart = {}; updateCart(); checkoutBtn.textContent = "Siparişi Onayla"; checkoutBtn.disabled = false;
-  }, 1000);
-};
-document.getElementById("closeSuccessBtn").onclick = () => { document.getElementById("successModal").classList.remove("open"); document.body.classList.remove("lock"); };
+            <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extralight tracking-tight text-white leading-none">
+                Duyuların <br>
+                <span class="italic font-normal gold-gradient-text">Simyası</span>
+            </h1>
 
-// Init
-renderCategories();
-renderMenu();
-updateCart();
+            <p class="max-w-2xl mx-auto text-gray-400 text-sm sm:text-base md:text-lg font-light leading-relaxed tracking-wide">
+                AURA, geleneksel Türk lezzet mirasını moleküler gastronomi ve çağdaş sunum teknikleriyle buluşturarak unutulmaz bir lezzet ritüeline dönüştürüyor.
+            </p>
 
-setTimeout(() => {
-  document.getElementById("welcomeToast").classList.add("show");
-  setTimeout(() => document.getElementById("welcomeToast").classList.remove("show"), 4000);
-}, 800);
-</script>
+            <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#reservation" class="w-full sm:w-auto px-8 py-4 rounded-full font-medium text-xs uppercase tracking-[0.25em] gold-gradient-bg text-black hover:shadow-2xl hover:shadow-aura-gold/30 transition-all transform hover:-translate-y-0.5">
+                    Deneyimi Rezerve Et
+                </a>
+                <a href="#menu" class="w-full sm:w-auto px-8 py-4 rounded-full font-medium text-xs uppercase tracking-[0.25em] text-white glass-panel hover:border-aura-gold/50 transition-all">
+                    Menüyü Keşfet
+                </a>
+            </div>
+
+            <!-- Awards Badge Row -->
+            <div class="pt-12 grid grid-cols-2 md:grid-cols-4 gap-6 opacity-70 max-w-3xl mx-auto border-t border-gray-800/80">
+                <div class="text-center">
+                    <p class="font-serif text-2xl text-aura-gold">3 Yıldız</p>
+                    <p class="text-[10px] uppercase tracking-widest text-gray-500 mt-1">Michelin Guide</p>
+                </div>
+                <div class="text-center">
+                    <p class="font-serif text-2xl text-aura-gold">No. 14</p>
+                    <p class="text-[10px] uppercase tracking-widest text-gray-500 mt-1">World's 50 Best</p>
+                </div>
+                <div class="text-center">
+                    <p class="font-serif text-2xl text-aura-gold">4 Şapka</p>
+                    <p class="text-[10px] uppercase tracking-widest text-gray-500 mt-1">Gault & Millau</p>
+                </div>
+                <div class="text-center">
+                    <p class="font-serif text-2xl text-aura-gold">%100 Sürdürülebilir</p>
+                    <p class="text-[10px] uppercase tracking-widest text-gray-500 mt-1">Yeşil Yıldız</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Down Scroll Indicator -->
+        <a href="#about" class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-2 text-gray-500 hover:text-aura-gold transition-colors">
+            <span class="text-[10px] uppercase tracking-widest">Keşfet</span>
+            <i class="fa-solid fa-chevron-down text-xs animate-bounce"></i>
+        </a>
+    </section>
+
+    <!-- Philosophy & Chef Section -->
+    <section id="about" class="py-24 px-6 relative z-10 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <!-- Left Image Composition -->
+            <div class="lg:col-span-6 relative">
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-aura-gold/20">
+                    <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=1974&auto=format&fit=crop" alt="Executive Chef" class="w-full h-[550px] object-cover filter brightness-90">
+                    <div class="absolute inset-0 bg-gradient-to-t from-aura-bg via-transparent to-transparent"></div>
+                </div>
+                
+                <!-- Floating Overlay Card -->
+                <div class="absolute -bottom-6 -right-6 hidden sm:block p-6 glass-panel rounded-2xl max-w-xs shadow-2xl border-aura-gold/30">
+                    <i class="fa-solid fa-quote-left text-aura-gold text-2xl mb-2"></i>
+                    <p class="font-serif italic text-sm text-gray-300">
+                        "Yemek pişirmek sadece bir lezzet değil, hatıraları ve hisleri yeniden uyandırma sanatıdır."
+                    </p>
+                    <p class="text-xs font-bold text-aura-gold mt-3 tracking-wider uppercase">— Şef Aris Thorne</p>
+                </div>
+            </div>
+
+            <!-- Right Content -->
+            <div class="lg:col-span-6 space-y-6">
+                <div class="inline-flex items-center space-x-2 text-aura-gold text-xs tracking-[0.3em] uppercase">
+                    <span class="w-8 h-[1px] bg-aura-gold"></span>
+                    <span>Gastronomik Felsefe</span>
+                </div>
+
+                <h2 class="font-serif text-4xl sm:text-5xl text-white font-light leading-tight">
+                    Doğanın En Nadide Hediyeleri, <br>
+                    <span class="italic text-aura-gold">Sanatsal Bir Dokunuşla</span>
+                </h2>
+
+                <p class="text-gray-400 text-sm leading-relaxed font-light">
+                    AURA'da servis edilen her bir tabak; Ege kıyılarından toplanan taze otsulardan, Doğu Anadolu'nun yüksek yaylalarındaki özel dinlendirilmiş etlere kadar yerel üreticilerden doğrudan tedarik edilen mevsimsel hammaddelerin bir kutlamasıdır.
+                </p>
+
+                <div class="grid grid-cols-2 gap-6 pt-4">
+                    <div class="border-l border-aura-gold/30 pl-4">
+                        <h4 class="text-white font-serif text-lg">Sıfır Atık Mutfak</h4>
+                        <p class="text-xs text-gray-400 mt-1">Tüm malzemeler sürdürülebilir döngüde %100 değerlendirilir.</p>
+                    </div>
+                    <div class="border-l border-aura-gold/30 pl-4">
+                        <h4 class="text-white font-serif text-lg">Nadir Mahzen</h4>
+                        <p class="text-xs text-gray-400 mt-1">Dünyanın dört bir yanından 1.200'den fazla özel rekolte şarap.</p>
+                    </div>
+                </div>
+
+                <div class="pt-4">
+                    <a href="#menu" class="inline-flex items-center space-x-3 text-aura-gold text-xs uppercase tracking-[0.2em] hover:text-white transition-colors group">
+                        <span>Tadım Menüsüne Göz Atın</span>
+                        <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Menu Section -->
+    <section id="menu" class="py-24 px-6 relative z-10 bg-aura-bg/50">
+        <div class="max-w-7xl mx-auto space-y-12">
+            <!-- Header -->
+            <div class="text-center space-y-4 max-w-2xl mx-auto">
+                <span class="text-aura-gold text-xs tracking-[0.3em] uppercase">Özel Seçkiler</span>
+                <h2 class="font-serif text-4xl sm:text-6xl text-white font-light">AURA Lezzet Koleksiyonu</h2>
+                <p class="text-gray-400 text-sm font-light">
+                    Duyularınızı harekete geçirmek üzere tasarlanmış, mevsimsel ve sanatsal gastronomi seçkisi.
+                </p>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="flex items-center justify-center space-x-2 overflow-x-auto pb-4 no-scrollbar" id="menuFilters">
+                <button data-cat="all" class="menu-filter-btn px-6 py-2.5 rounded-full text-xs uppercase tracking-widest font-medium transition-all bg-aura-gold text-black">
+                    Tümü
+                </button>
+                <button data-cat="tasting" class="menu-filter-btn px-6 py-2.5 rounded-full text-xs uppercase tracking-widest font-medium transition-all glass-panel text-gray-400 hover:text-white">
+                    Tadım Menüsü
+                </button>
+                <button data-cat="mains" class="menu-filter-btn px-6 py-2.5 rounded-full text-xs uppercase tracking-widest font-medium transition-all glass-panel text-gray-400 hover:text-white">
+                    Ana Yemekler
+                </button>
+                <button data-cat="mixology" class="menu-filter-btn px-6 py-2.5 rounded-full text-xs uppercase tracking-widest font-medium transition-all glass-panel text-gray-400 hover:text-white">
+                    Miksoloji & Kokteyl
+                </button>
+                <button data-cat="desserts" class="menu-filter-btn px-6 py-2.5 rounded-full text-xs uppercase tracking-widest font-medium transition-all glass-panel text-gray-400 hover:text-white">
+                    Tatlılar
+                </button>
+            </div>
+
+            <!-- Menu Grid Container -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="menuGrid">
+                <!-- Dynamic Items Inserted via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Ambiance / Dining Areas Section -->
+    <section id="experience" class="py-24 px-6 relative z-10 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto space-y-12">
+            <div class="flex flex-col md:flex-row md:items-end justify-between">
+                <div class="space-y-3">
+                    <span class="text-aura-gold text-xs tracking-[0.3em] uppercase">Mekân & Atmosfer</span>
+                    <h2 class="font-serif text-4xl sm:text-5xl text-white font-light">Farklı Duyusal Alanlar</h2>
+                </div>
+                <p class="text-gray-400 text-sm font-light max-w-md mt-4 md:mt-0">
+                    Her ziyaretinizde farklı bir ruh halini yaşayabilmeniz için özel olarak mimari konseptlendirilmiş 4 ayrı salon.
+                </p>
+            </div>
+
+            <!-- Ambiances Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="glass-card rounded-2xl overflow-hidden group cursor-pointer" onclick="selectAreaForReservation('Main Dining Room')">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop" alt="Ana Salon" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                        <span class="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[10px] text-aura-gold tracking-widest uppercase border border-aura-gold/30">Ana Salon</span>
+                    </div>
+                    <div class="p-6 space-y-2">
+                        <h3 class="font-serif text-xl text-white">Grand Obsidian Hall</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed">Sıcak ışıklandırma, canlı arp müziği ve yüksek tavanlı görkemli akşam yemeği atmosferi.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card rounded-2xl overflow-hidden group cursor-pointer" onclick="selectAreaForReservation('Chef\'s Counter')">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1974&auto=format&fit=crop" alt="Chef Counter" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                        <span class="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[10px] text-aura-gold tracking-widest uppercase border border-aura-gold/30">Şef Tezgahı</span>
+                    </div>
+                    <div class="p-6 space-y-2">
+                        <h3 class="font-serif text-xl text-white">Chef's Omakase Bar</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed">Mutfak ekibinin hazırlık sürecine birebir tanıklık edebileceğiniz 12 kişilik interaktif tezgah.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card rounded-2xl overflow-hidden group cursor-pointer" onclick="selectAreaForReservation('Private Garden')">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?q=80&w=1935&auto=format&fit=crop" alt="Garden Lounge" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                        <span class="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[10px] text-aura-gold tracking-widest uppercase border border-aura-gold/30">Gizli Bahçe</span>
+                    </div>
+                    <div class="p-6 space-y-2">
+                        <h3 class="font-serif text-xl text-white">Botanical Zen Courtyard</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed">Zeytin ağaçları ve su sesleri arasında özel ısıtmalı, romantik açık hava locaları.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="glass-card rounded-2xl overflow-hidden group cursor-pointer" onclick="selectAreaForReservation('Sky Terrace')">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?q=80&w=2070&auto=format&fit=crop" alt="Sky Terrace" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                        <span class="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[10px] text-aura-gold tracking-widest uppercase border border-aura-gold/30">Sky Teras</span>
+                    </div>
+                    <div class="p-6 space-y-2">
+                        <h3 class="font-serif text-xl text-white">Panorama Mixology Lounge</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed">Şehir manzarasına karşı nadir içki koleksiyonları ve özel miksoloji performansları.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Interactive System -->
+    <section id="reservation" class="py-24 px-6 relative z-10 bg-aura-bg border-t border-gray-900">
+        <div class="max-w-5xl mx-auto glass-panel p-8 sm:p-12 rounded-3xl relative overflow-hidden border border-aura-gold/20 shadow-2xl">
+            <!-- Background Glow -->
+            <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-aura-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="text-center space-y-3 max-w-xl mx-auto mb-10">
+                <span class="text-aura-gold text-xs tracking-[0.3em] uppercase">Çevrimiçi Masanız</span>
+                <h2 class="font-serif text-3xl sm:text-5xl text-white font-light">AURA Masa Rezervasyonu</h2>
+                <p class="text-gray-400 text-xs sm:text-sm font-light">
+                    Kişiye özel gastronomi deneyiminiz için tarih, alan ve davetli sayınızı belirleyin.
+                </p>
+            </div>
+
+            <!-- Interactive Form -->
+            <form id="resForm" onsubmit="handleReservationSubmit(event)" class="space-y-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Date Picker -->
+                    <div class="space-y-2">
+                        <label class="text-xs uppercase tracking-wider text-gray-400 font-medium">Tarih Seçimi</label>
+                        <div class="relative">
+                            <input type="date" id="resDate" required class="w-full bg-black/50 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-aura-gold transition-colors">
+                        </div>
+                    </div>
+
+                    <!-- Time Slot Picker -->
+                    <div class="space-y-2">
+                        <label class="text-xs uppercase tracking-wider text-gray-400 font-medium">Saat Dilimi</label>
+                        <select id="resTime" required class="w-full bg-black/50 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-aura-gold transition-colors">
+                            <option value="">Saat Seçin</option>
+                            <option value="18:30">18:30 (Erken Oturum)</option>
+                            <option value="19:45">19:45 (Tadım Seansı)</option>
+                            <option value="21:00">21:00 (Prime Oturum)</option>
+                            <option value="22:15">22:15 (Gece Deneyimi)</option>
+                        </select>
+                    </div>
+
+                    <!-- Guests Count -->
+                    <div class="space-y-2">
+                        <label class="text-xs uppercase tracking-wider text-gray-400 font-medium">Kişi Sayısı</label>
+                        <select id="resGuests" required class="w-full bg-black/50 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-aura-gold transition-colors">
+                            <option value="1">1 Misafir (Şef Masası)</option>
+                            <option value="2" selected>2 Misafir (Çift)</option>
+                            <option value="4">4 Misafir (Özel Grup)</option>
+                            <option value="6">6 Misafir (VIP Masa)</option>
+                            <option value="8+">8+ Misafir (Özel Etkinlik)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Area Selection Buttons -->
+                <div class="space-y-2">
+                    <label class="text-xs uppercase tracking-wider text-gray-400 font-medium block">Atmosfer / Salon Tercihi</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="areaSelectors">
+                        <button type="button" data-area="Main Dining Room" class="area-btn border border-aura-gold bg-aura-gold/10 text-white p-3 rounded-xl text-xs text-center transition-all">
+                            <i class="fa-solid fa-gem mb-1 block text-aura-gold"></i>
+                            Grand Obsidian
+                        </button>
+                        <button type="button" data-area="Chef's Counter" class="area-btn border border-gray-800 bg-black/40 text-gray-400 p-3 rounded-xl text-xs text-center hover:border-gray-700 transition-all">
+                            <i class="fa-solid fa-utensils mb-1 block"></i>
+                            Chef's Omakase
+                        </button>
+                        <button type="button" data-area="Private Garden" class="area-btn border border-gray-800 bg-black/40 text-gray-400 p-3 rounded-xl text-xs text-center hover:border-gray-700 transition-all">
+                            <i class="fa-solid fa-leaf mb-1 block"></i>
+                            Gizli Bahçe
+                        </button>
+                        <button type="button" data-area="Sky Terrace" class="area-btn border border-gray-800 bg-black/40 text-gray-400 p-3 rounded-xl text-xs text-center hover:border-gray-700 transition-all">
+                            <i class="fa-solid fa-moon mb-1 block"></i>
+                            Sky Teras
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Guest Info Inputs -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+                    <input type="text" id="resName" placeholder="Adınız Soyadınız" required class="bg-black/50 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-aura-gold transition-colors">
+                    <input type="tel" id="resPhone" placeholder="Telefon Numaranız" required class="bg-black/50 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-aura-gold transition-colors">
+                </div>
+
+                <textarea id="resNotes" placeholder="Alerjenler, diyet kısıtlamaları veya özel kutlama notlarınız..." rows="3" class="w-full bg-black/50 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-aura-gold transition-colors"></textarea>
+
+                <div class="text-center pt-2">
+                    <button type="submit" class="w-full sm:w-auto px-12 py-4 rounded-full text-xs uppercase tracking-[0.25em] font-medium gold-gradient-bg text-black hover:shadow-xl hover:shadow-aura-gold/20 transition-all">
+                        Rezervasyonu Onayla
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-900 bg-black py-16 px-6 relative z-10 text-gray-400 text-xs">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+            <!-- Col 1: Brand -->
+            <div class="space-y-4">
+                <div class="flex items-center space-x-3">
+                    <span class="w-8 h-8 rounded-full bg-aura-gold/10 border border-aura-gold/30 flex items-center justify-center text-aura-gold font-serif">A</span>
+                    <span class="font-serif tracking-[0.2em] text-lg text-white font-bold">AURA</span>
+                </div>
+                <p class="text-gray-500 leading-relaxed font-light">
+                    Kusursuz lezzetlerin ve unutulmaz anların birleştiği lüks gastronomi mabedi.
+                </p>
+            </div>
+
+            <!-- Col 2: Hours -->
+            <div class="space-y-3">
+                <h4 class="text-white font-medium uppercase tracking-wider text-[11px] text-aura-gold">Çalışma Saatleri</h4>
+                <p>Salı — Pazar: 18:00 - 01:00</p>
+                <p>Pazartesi: Kapalı (Şef Ar-Ge Günü)</p>
+                <p class="text-gray-600">Tadım Servisi Son Sipariş: 22:30</p>
+            </div>
+
+            <!-- Col 3: Location -->
+            <div class="space-y-3">
+                <h4 class="text-white font-medium uppercase tracking-wider text-[11px] text-aura-gold">Lokasyon</h4>
+                <p>Yeniköy Caddesi No: 88, Sarıyer</p>
+                <p>İstanbul, Türkiye</p>
+                <p class="text-gray-500">+90 (212) 888 00 00</p>
+            </div>
+
+            <!-- Col 4: Social / Newsletter -->
+            <div class="space-y-3">
+                <h4 class="text-white font-medium uppercase tracking-wider text-[11px] text-aura-gold">AURA Kulüp</h4>
+                <p class="text-gray-500">Özel menü önizlemeleri ve tadım davetleri için kaydolun.</p>
+                <div class="flex items-center space-x-2">
+                    <input type="email" placeholder="E-posta adresiniz" class="bg-aura-card border border-gray-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-aura-gold w-full">
+                    <button class="gold-gradient-bg text-black px-3 py-2 rounded-lg font-bold hover:opacity-90">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto border-t border-gray-900 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between text-gray-600 text-[11px]">
+            <p>© 2026 AURA Gastronomy & Mixology. Tüm hakları saklıdır.</p>
+            <div class="flex space-x-6 mt-4 sm:mt-0">
+                <a href="#" class="hover:text-aura-gold transition-colors">Gizlilik Politikası</a>
+                <a href="#" class="hover:text-aura-gold transition-colors">Dress Code</a>
+                <a href="#" class="hover:text-aura-gold transition-colors">Basın Odası</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- DISH DETAIL MODAL -->
+    <div id="dishModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div class="glass-panel w-full max-w-2xl rounded-3xl overflow-hidden border border-aura-gold/30 shadow-2xl relative transform scale-95 transition-transform duration-300" id="dishModalCard">
+            <!-- Close Button -->
+            <button onclick="closeDishModal()" class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/60 border border-gray-700 text-white flex items-center justify-center hover:border-aura-gold transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <!-- Image -->
+                <div class="h-64 md:h-full relative">
+                    <img id="modalImg" src="" alt="" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent md:hidden"></div>
+                </div>
+
+                <!-- Details -->
+                <div class="p-6 sm:p-8 space-y-4 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span id="modalCat" class="text-[10px] uppercase tracking-widest text-aura-gold font-semibold"></span>
+                            <span id="modalPrice" class="font-serif text-xl text-aura-gold"></span>
+                        </div>
+
+                        <h3 id="modalTitle" class="font-serif text-2xl text-white"></h3>
+                        <p id="modalDesc" class="text-xs text-gray-400 font-light leading-relaxed"></p>
+
+                        <!-- Sommelier Pairing -->
+                        <div class="bg-black/40 border border-aura-gold/20 rounded-xl p-3 space-y-1">
+                            <div class="flex items-center space-x-2 text-aura-gold text-[10px] uppercase tracking-wider">
+                                <i class="fa-solid fa-wine-glass"></i>
+                                <span>Somölye Şarap Eşleşmesi</span>
+                            </div>
+                            <p id="modalPairing" class="text-xs text-gray-300 font-serif italic"></p>
+                        </div>
+
+                        <!-- Allergens -->
+                        <div class="space-y-1">
+                            <span class="text-[10px] uppercase tracking-wider text-gray-500">Alerjenler & İçerik</span>
+                            <div id="modalAllergens" class="flex flex-wrap gap-1.5"></div>
+                        </div>
+                    </div>
+
+                    <!-- Add to Tasting Cart Action -->
+                    <button id="modalAddBtn" class="w-full py-3 rounded-full text-xs uppercase tracking-widest font-medium gold-gradient-bg text-black hover:shadow-lg transition-all">
+                        Tadım Sepetine Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TASTING BASKET DRAWER -->
+    <div id="cartDrawer" class="fixed inset-y-0 right-0 z-50 w-full max-w-md glass-panel border-l border-aura-gold/20 p-6 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col justify-between">
+        <div>
+            <!-- Drawer Header -->
+            <div class="flex items-center justify-between border-b border-gray-800 pb-4">
+                <div class="flex items-center space-x-3">
+                    <i class="fa-solid fa-utensils text-aura-gold"></i>
+                    <h3 class="font-serif text-xl text-white">Tadım Sepetiniz</h3>
+                </div>
+                <button onclick="toggleCart()" class="text-gray-400 hover:text-white p-2">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Cart Items Container -->
+            <div id="cartItems" class="py-6 space-y-4 max-h-[50vh] overflow-y-auto">
+                <!-- Empty State -->
+                <div id="emptyCart" class="text-center py-12 space-y-3">
+                    <i class="fa-solid fa-plate-wheat text-4xl text-gray-700"></i>
+                    <p class="text-xs text-gray-500 font-light">Tadım sepetiniz henüz boş.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Drawer Footer / Summary -->
+        <div class="border-t border-gray-800 pt-4 space-y-4">
+            <div class="space-y-2 text-xs">
+                <div class="flex justify-between text-gray-400">
+                    <span>Ara Toplam</span>
+                    <span id="subTotal">₺0</span>
+                </div>
+                <div class="flex justify-between text-gray-400">
+                    <span>Servis Bedeli (%10)</span>
+                    <span id="serviceFee">₺0</span>
+                </div>
+                <div class="flex justify-between text-white font-serif text-lg pt-2 border-t border-gray-800/60">
+                    <span>Genel Toplam</span>
+                    <span id="grandTotal" class="text-aura-gold">₺0</span>
+                </div>
+            </div>
+
+            <button onclick="simulateOrderCheckout()" id="checkoutBtn" disabled class="w-full py-4 rounded-full text-xs uppercase tracking-widest font-medium bg-gray-800 text-gray-500 transition-all cursor-not-allowed">
+                Siparişi Tamamla
+            </button>
+        </div>
+    </div>
+
+    <!-- SUCCESS TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 glass-panel border border-aura-gold/40 px-6 py-4 rounded-2xl shadow-2xl flex items-center space-x-4 transform translate-y-20 opacity-0 transition-all duration-300">
+        <div class="w-8 h-8 rounded-full bg-aura-gold/20 flex items-center justify-center text-aura-gold">
+            <i class="fa-solid fa-check"></i>
+        </div>
+        <div>
+            <h4 id="toastTitle" class="font-serif text-sm text-white font-bold"></h4>
+            <p id="toastMsg" class="text-xs text-gray-400"></p>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT APPLICATION LOGIC -->
+    <script>
+        // Menu Database
+        const menuData = [
+            {
+                id: 1,
+                category: 'tasting',
+                name: 'Anadolu AURA Tadım Serisi (7 Aşama)',
+                desc: 'Şefin özel rekolte zeytinyağları, tütsülenmiş kuzu sırtı ve fermente otlarla hazırladığı imza serüveni.',
+                price: 4800,
+                img: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1000&auto=format&fit=crop',
+                pairing: '2018 Urla Hypnos Cabernet Franc & Merlot',
+                allergens: ['Glüten', 'Süt Ürünleri', 'Kereviz']
+            },
+            {
+                id: 2,
+                category: 'mains',
+                name: 'Tütsülenmiş Ege Ahtapotu',
+                desc: 'Meşe odununda dinlendirilmiş fava kreması, karamelize arpacık soğan ve safran infüzyonlu sos ile.',
+                price: 1250,
+                img: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?q=80&w=1000&auto=format&fit=crop',
+                pairing: '2021 Sarafin Sauvignon Blanc',
+                allergens: ['Deniz Ürünleri', 'Susam']
+            },
+            {
+                id: 3,
+                category: 'mains',
+                name: 'Dry-Aged Wagyu Bonfile',
+                desc: '45 gün dinlendirilmiş Wagyu, trüf mantarlı patates püresi ve siyah sarımsak demi-glace sos.',
+                price: 2450,
+                img: 'https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=1000&auto=format&fit=crop',
+                pairing: '2019 Chamlija Nev’i Şahsına Münhasır',
+                allergens: ['Süt Ürünleri']
+            },
+            {
+                id: 4,
+                category: 'mixology',
+                name: 'Obsidian Velvet Kokteyl',
+                desc: 'Aktivite edilmiş meşe kömürü, 12 yıllık viski, fıstık likörü ve taze incir kordonu.',
+                price: 680,
+                img: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1000&auto=format&fit=crop',
+                pairing: 'AURA Özel İmzası',
+                allergens: ['Kuruyemiş']
+            },
+            {
+                id: 5,
+                category: 'mixology',
+                name: 'Golden Elixir Signature',
+                desc: 'Altın yaprak tanecikleri, şampanya bazı, mürver çiçeği özütü ve kireç infüzyonu.',
+                price: 750,
+                img: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=1000&auto=format&fit=crop',
+                pairing: 'AURA Aperitif',
+                allergens: ['Sülfit']
+            },
+            {
+                id: 6,
+                category: 'desserts',
+                name: 'Duyusal Çikolata Küresi',
+                desc: '%70 Madagaskar kakao, sıcak Antep fıstıklı pralin sosu ve sıvı azotlu vanilya dondurması.',
+                price: 580,
+                img: 'https://images.unsplash.com/photo-1579372786545-d24232daf58c?q=80&w=1000&auto=format&fit=crop',
+                pairing: '2017 Kayra Madre Öküzgözü Boğazkere',
+                allergens: ['Süt Ürünleri', 'Kuruyemiş', 'Yumurta']
+            }
+        ];
+
+        let cart = [];
+        let selectedArea = 'Main Dining Room';
+        let isSoundOn = true;
+
+        // Sound simulation FX
+        function playChime() {
+            if (!isSoundOn) return;
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(880, ctx.currentTime); // A5 note
+                gain.gain.setValueAtTime(0.05, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.5);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + 0.5);
+            } catch(e){}
+        }
+
+        // Initialize App
+        window.addEventListener('DOMContentLoaded', () => {
+            renderMenuItems('all');
+            setupFilterButtons();
+            setupAreaSelectors();
+            
+            // Set default date to tomorrow
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById('resDate').value = tomorrow.toISOString().split('T')[0];
+
+            // Sound Toggle Handler
+            document.getElementById('soundToggle').addEventListener('click', () => {
+                isSoundOn = !isSoundOn;
+                const icon = document.getElementById('soundIcon');
+                icon.className = isSoundOn ? 'fa-solid fa-volume-high text-xs' : 'fa-solid fa-volume-xmark text-xs';
+                showToast(isSoundOn ? 'Sesler Açık' : 'Sesler Kapatıldı', 'Arayüz ses efektleri güncellendi.');
+            });
+
+            // Cart Toggle
+            document.getElementById('cartBtn').addEventListener('click', toggleCart);
+        });
+
+        // Render Menu Cards
+        function renderMenuItems(category) {
+            const grid = document.getElementById('menuGrid');
+            grid.innerHTML = '';
+
+            const filtered = category === 'all' ? menuData : menuData.filter(i => i.category === category);
+
+            filtered.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'glass-card rounded-2xl overflow-hidden flex flex-col justify-between group';
+                card.innerHTML = `
+                    <div>
+                        <div class="h-56 relative overflow-hidden">
+                            <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-95">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                            <span class="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-aura-gold text-xs font-serif px-3 py-1 rounded-full border border-aura-gold/30">
+                                ₺${item.price.toLocaleString('tr-TR')}
+                            </span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <h3 class="font-serif text-xl text-white group-hover:text-aura-gold transition-colors">${item.name}</h3>
+                            <p class="text-xs text-gray-400 font-light leading-relaxed line-clamp-2">${item.desc}</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-2 flex items-center justify-between border-t border-gray-800/40 mt-4">
+                        <button onclick="openDishModal(${item.id})" class="text-xs text-gray-400 hover:text-white transition-colors underline underline-offset-4">
+                            Detaylı İncele
+                        </button>
+                        <button onclick="addToCart(${item.id})" class="w-9 h-9 rounded-full bg-aura-gold/10 border border-aura-gold/30 text-aura-gold hover:bg-aura-gold hover:text-black transition-all flex items-center justify-center">
+                            <i class="fa-solid fa-plus text-xs"></i>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Setup Filter Buttons
+        function setupFilterButtons() {
+            const buttons = document.querySelectorAll('.menu-filter-btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    buttons.forEach(b => {
+                        b.className = 'menu-filter-btn px-6 py-2.5 rounded-full text-xs uppercase tracking-widest font-medium transition-all glass-panel text-gray-400 hover:text-white';
+                    });
+                    btn.className = 'menu-filter-btn px-6 py-2.5 rounded-full text-xs uppercase tracking-widest font-medium transition-all bg-aura-gold text-black';
+                    renderMenuItems(btn.dataset.cat);
+                    playChime();
+                });
+            });
+        }
+
+        // Setup Area Selection Buttons
+        function setupAreaSelectors() {
+            const btns = document.querySelectorAll('.area-btn');
+            btns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    btns.forEach(b => {
+                        b.className = 'area-btn border border-gray-800 bg-black/40 text-gray-400 p-3 rounded-xl text-xs text-center hover:border-gray-700 transition-all';
+                    });
+                    btn.className = 'area-btn border border-aura-gold bg-aura-gold/10 text-white p-3 rounded-xl text-xs text-center transition-all';
+                    selectedArea = btn.dataset.area;
+                    playChime();
+                });
+            });
+        }
+
+        function selectAreaForReservation(areaName) {
+            selectedArea = areaName;
+            const btns = document.querySelectorAll('.area-btn');
+            btns.forEach(b => {
+                if(b.dataset.area === areaName) {
+                    b.click();
+                }
+            });
+            document.getElementById('reservation').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Modal Handlers
+        function openDishModal(id) {
+            const item = menuData.find(i => i.id === id);
+            if (!item) return;
+
+            document.getElementById('modalImg').src = item.img;
+            document.getElementById('modalCat').innerText = item.category.toUpperCase();
+            document.getElementById('modalTitle').innerText = item.name;
+            document.getElementById('modalPrice').innerText = `₺${item.price.toLocaleString('tr-TR')}`;
+            document.getElementById('modalDesc').innerText = item.desc;
+            document.getElementById('modalPairing').innerText = item.pairing;
+
+            const allergContainer = document.getElementById('modalAllergens');
+            allergContainer.innerHTML = item.allergens.map(a => `<span class="bg-aura-surface px-2.5 py-1 rounded-md text-[10px] text-gray-300 border border-gray-800">${a}</span>`).join('');
+
+            const addBtn = document.getElementById('modalAddBtn');
+            addBtn.onclick = () => {
+                addToCart(item.id);
+                closeDishModal();
+            };
+
+            const modal = document.getElementById('dishModal');
+            const card = document.getElementById('dishModalCard');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                card.classList.remove('scale-95');
+            }, 10);
+
+            playChime();
+        }
+
+        function closeDishModal() {
+            const modal = document.getElementById('dishModal');
+            const card = document.getElementById('dishModalCard');
+            modal.classList.add('opacity-0');
+            card.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Cart Drawer Handlers
+        function toggleCart() {
+            const drawer = document.getElementById('cartDrawer');
+            drawer.classList.toggle('translate-x-full');
+            playChime();
+        }
+
+        function addToCart(id) {
+            const item = menuData.find(i => i.id === id);
+            const existing = cart.find(c => c.id === id);
+
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({ ...item, qty: 1 });
+            }
+
+            updateCartUI();
+            showToast('Sepete Eklendi', `${item.name} tadım sepetinize eklendi.`);
+            playChime();
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(c => c.id !== id);
+            updateCartUI();
+            playChime();
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cartItems');
+            const badge = document.getElementById('cartBadge');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+
+            const totalCount = cart.reduce((acc, curr) => acc + curr.qty, 0);
+
+            if (totalCount > 0) {
+                badge.innerText = totalCount;
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 space-y-3">
+                        <i class="fa-solid fa-plate-wheat text-4xl text-gray-700"></i>
+                        <p class="text-xs text-gray-500 font-light">Tadım sepetiniz henüz boş.</p>
+                    </div>
+                `;
+                document.getElementById('subTotal').innerText = '₺0';
+                document.getElementById('serviceFee').innerText = '₺0';
+                document.getElementById('grandTotal').innerText = '₺0';
+
+                checkoutBtn.disabled = true;
+                checkoutBtn.className = 'w-full py-4 rounded-full text-xs uppercase tracking-widest font-medium bg-gray-800 text-gray-500 transition-all cursor-not-allowed';
+                return;
+            }
+
+            container.innerHTML = '';
+            let subtotal = 0;
+
+            cart.forEach(item => {
+                subtotal += item.price * item.qty;
+                const row = document.createElement('div');
+                row.className = 'flex items-center justify-between glass-card p-3 rounded-xl border border-gray-800';
+                row.innerHTML = `
+                    <div class="flex items-center space-x-3">
+                        <img src="${item.img}" class="w-12 h-12 rounded-lg object-cover">
+                        <div>
+                            <h4 class="text-xs font-serif text-white">${item.name}</h4>
+                            <p class="text-[10px] text-aura-gold">₺${item.price.toLocaleString('tr-TR')} x ${item.qty}</p>
+                        </div>
+                    </div>
+                    <button onclick="removeFromCart(${item.id})" class="text-gray-500 hover:text-red-400 p-2">
+                        <i class="fa-solid fa-trash-can text-xs"></i>
+                    </button>
+                `;
+                container.appendChild(row);
+            });
+
+            const serviceFee = subtotal * 0.10;
+            const grandTotal = subtotal + serviceFee;
+
+            document.getElementById('subTotal').innerText = `₺${subtotal.toLocaleString('tr-TR')}`;
+            document.getElementById('serviceFee').innerText = `₺${serviceFee.toLocaleString('tr-TR')}`;
+            document.getElementById('grandTotal').innerText = `₺${grandTotal.toLocaleString('tr-TR')}`;
+
+            checkoutBtn.disabled = false;
+            checkoutBtn.className = 'w-full py-4 rounded-full text-xs uppercase tracking-widest font-medium gold-gradient-bg text-black hover:shadow-xl transition-all cursor-pointer';
+        }
+
+        function simulateOrderCheckout() {
+            const btn = document.getElementById('checkoutBtn');
+            btn.innerText = 'Sipariş İletiliyor...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                const orderCode = 'AURA-' + Math.floor(100000 + Math.random() * 900000);
+                cart = [];
+                updateCartUI();
+                toggleCart();
+                btn.innerText = 'Siparişi Tamamla';
+                showToast('Tadım Siparişi Alındı', `Referans Kodunuz: ${orderCode}. Mutfak ekibimiz hazırlıklara başladı.`);
+            }, 1500);
+        }
+
+        // Reservation Form Handling
+        function handleReservationSubmit(e) {
+            e.preventDefault();
+            const date = document.getElementById('resDate').value;
+            const time = document.getElementById('resTime').value;
+            const guests = document.getElementById('resGuests').value;
+            const name = document.getElementById('resName').value;
+
+            showToast('Rezervasyon Onaylandı', `Sayın ${name}, ${date} - ${time} saatinde ${selectedArea} alanındaki masanız ayrılmıştır.`);
+            document.getElementById('resForm').reset();
+            playChime();
+        }
+
+        // Toast Helper
+        function showToast(title, msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastTitle').innerText = title;
+            document.getElementById('toastMsg').innerText = msg;
+
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 4000);
+        }
+    </script>
 </body>
 </html>
+```
