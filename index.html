@@ -4157,5 +4157,26 @@ body::before{opacity:.05;mix-blend-mode:screen}
   }
 }
 </style>
+<style id="arch-fix">
+.hero .hero-art .arch-frame{
+  background-image:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=700&h=900&fit=crop&q=85') !important;
+  background-size:cover !important;
+  background-position:center !important;
+  background-repeat:no-repeat !important;
+  border-color:rgba(240,233,219,.18) !important;
+}
+.hero .hero-art .arch-frame::after{
+  background:linear-gradient(180deg,rgba(15,12,10,.15) 0%,transparent 45%,rgba(15,12,10,.65) 100%) !important;
+}
+@media (max-width:767px){
+  .hero-in{grid-template-columns:1fr !important;gap:16px !important}
+  .hero-art{min-height:auto !important;margin-bottom:8px !important}
+  .hero .arch-frame{max-width:200px !important;aspect-ratio:1/1.05 !important;margin:0 auto !important}
+  .arch-badge{font-size:9.5px !important;padding:4px 9px !important;top:6% !important}
+  .hero-leaf{display:none !important}
+  .hero h1{font-size:40px !important;margin-top:6px !important}
+  .hero-lede{font-size:14.5px !important}
+}
+</style>
 </body>
 </html
