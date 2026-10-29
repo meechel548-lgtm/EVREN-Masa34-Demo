@@ -3,837 +3,186 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#2a241d">
-<meta name="description" content="Masa 34 Bistro — Ege sofrası, modern Anadolu mutfağı. Masanızdan ya da paket servis olarak sipariş verin.">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://images.unsplash.com data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self'; media-src 'self' https://videos.pexels.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="theme-color" content="#0f0c0a">
 <title>Masa 34 Bistro — Ege Sofrası</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://images.unsplash.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700;1,9..144,900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ==========================================================================
-   MASA 34 BISTRO — EGE SOFRASI
-   Tasarım sistemi: renk, tipografi, boşluk, hareket
-   ========================================================================== */
 :root{
-  /* renkler */
-  --kiremit:#c25a3a;      /* ana */
-  --kiremit-d:#a0462a;    /* hover/koyu */
-  --kiremit-l:#e8a183;    /* açık ton */
-  --zeytin:#6b7d3c;       /* ikincil */
-  --zeytin-d:#4e5c2a;
-  --kemik:#f4ede0;        /* ana zemin */
-  --kağıt:#faf6ef;        /* kart zemin */
-  --mürekkep:#2a241d;     /* ana metin */
-  --mürekkep-2:#4a4038;   /* ikincil metin */
-  --muted:#8a7f70;        /* soluk metin */
-  --kenar:#e0d5c2;        /* ince çizgi */
-  --kenar-2:#c9baa0;      /* koyu çizgi */
-  --pirinç:#b8926a;       /* altın vurgu */
-  --pirinç-d:#96754a;
-  --ok:#4a7a3f;           /* yeşil onay */
-  --uyarı:#b8492c;        /* kırmızı uyarı */
-  --altın-soft:#f2e4ce;   /* badge arkaplan */
-
-  /* tipografi */
-  --serif:"Fraunces","Iowan Old Style","Palatino Linotype",Georgia,serif;
-  --sans:"DM Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-
-  /* ölçek */
-  --t-hero:clamp(52px,11vw,104px);
-  --t-h1:clamp(36px,7vw,64px);
-  --t-h2:clamp(26px,4.5vw,40px);
-  --t-h3:clamp(20px,3vw,24px);
-  --t-h4:17px;
-  --t-body:15px;
-  --t-small:13.5px;
-  --t-micro:11px;
-  --t-label:10.5px;
-
-  /* boşluk */
-  --s-1:4px;  --s-2:8px;  --s-3:12px;  --s-4:16px;
-  --s-5:24px; --s-6:32px; --s-7:48px;  --s-8:64px;
-  --s-9:96px;
-
-  /* yarıçap */
-  --r-xs:4px; --r-sm:8px; --r-md:14px; --r-lg:22px; --r-xl:32px;
-  --r-pill:999px;
-
-  /* gölge */
-  --shadow-sm:0 1px 2px rgba(42,36,29,.06),0 2px 8px rgba(42,36,29,.04);
-  --shadow-md:0 2px 6px rgba(42,36,29,.06),0 8px 24px rgba(42,36,29,.08);
-  --shadow-lg:0 8px 16px rgba(42,36,29,.08),0 24px 64px rgba(42,36,29,.14);
-  --shadow-inset:inset 0 1px 0 rgba(255,255,255,.6);
-
-  /* hareket */
-  --ease-out:cubic-bezier(.16,1,.3,1);
-  --ease-smooth:cubic-bezier(.4,0,.2,1);
-  --ease-bounce:cubic-bezier(.34,1.56,.64,1);
-  --dur-fast:200ms;
-  --dur-base:350ms;
-  --dur-slow:600ms;
-
-  /* sabitler */
-  --hdr:64px;
-  --max-w:1160px;
+  /* Akşam Teması Renkleri */
+  --bg:#0f0c0a; --bg-2:#181310; --bg-3:#221a15;
+  --ink:#f2e9db; --ink-2:#c7baa3; --ink-3:#8a7d6a;
+  --accent:#e08948; --accent-d:#c46f30; --gold:#d4b878;
+  --kenar:rgba(240,233,219,.1); --kenar-2:rgba(240,233,219,.18);
+  --serif:"Fraunces", Georgia, serif; --sans:"DM Sans", sans-serif;
+  --shadow:0 8px 30px rgba(0,0,0,.5);
 }
-
-/* ---------- reset ---------- */
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{
-  font-family:var(--sans);
-  font-size:var(--t-body);
-  line-height:1.55;
-  color:var(--mürekkep);
-  background:var(--kemik);
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
-  overflow-x:hidden;
-  min-height:100dvh;
-}
-body.lock{overflow:hidden}
-img,svg{display:block;max-width:100%}
-button,input,textarea,select{font:inherit;color:inherit;background:none;border:0}
-button{cursor:pointer}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");mix-blend-mode:screen}
 a{color:inherit;text-decoration:none}
-ul,ol{list-style:none}
+button{font:inherit;background:none;border:0;cursor:pointer;color:inherit}
 
-/* ---------- tipografi ---------- */
-h1,h2,h3,h4{
-  font-family:var(--serif);
-  font-weight:700;
-  line-height:1.08;
-  letter-spacing:-.02em;
-  color:var(--mürekkep);
-}
-h1{font-size:var(--t-h1);font-weight:900}
-h2{font-size:var(--t-h2)}
-h3{font-size:var(--t-h3);line-height:1.15}
-h4{font-size:var(--t-h4);line-height:1.25;font-weight:600}
+/* --- HEADER --- */
+.hdr{position:sticky;top:0;z-index:50;background:rgba(15,12,10,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--kenar)}
+.hdr-in{max-width:1160px;margin:0 auto;height:64px;padding:0 20px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-logo{width:40px;height:40px;background:var(--accent);color:var(--bg);border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-weight:900;font-size:14px;box-shadow:0 0 20px rgba(224,137,72,.3)}
+.brand-name{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--ink)}
+.brand-sub{font-size:10.5px;color:var(--ink-3);letter-spacing:.1em;text-transform:uppercase}
 
-.label{
-  font-family:var(--sans);
-  font-size:var(--t-label);
-  font-weight:700;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:var(--pirinç-d);
-}
-.italic{font-style:italic;font-family:var(--serif);font-weight:400}
-.muted{color:var(--muted);font-size:var(--t-small)}
+/* --- HERO (KEMERLİ VİDEOLU ALAN) --- */
+.hero{position:relative;padding:40px 20px 20px;max-width:1160px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;z-index:2}
+.hero-glow{position:absolute;top:0;right:0;width:80vw;height:80vw;max-width:800px;max-height:800px;background:radial-gradient(circle,rgba(224,137,72,.15) 0%,transparent 60%);z-index:-1;pointer-events:none}
 
-/* ---------- yardımcılar ---------- */
-.hidden{display:none!important}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.container{max-width:var(--max-w);margin:0 auto;padding:0 clamp(16px,4vw,32px)}
-.stack>*+*{margin-top:var(--s-4)}
-.flex{display:flex;align-items:center;gap:var(--s-3)}
-.flex-between{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3)}
-.grid{display:grid;gap:var(--s-4)}
-
-/* ---------- odak halkası ---------- */
-:focus-visible{
-  outline:2px solid var(--kiremit);
-  outline-offset:3px;
-  border-radius:var(--r-xs);
-}
-
-/* ---------- skip link ---------- */
-.skip-link{
-  position:fixed;
-  top:var(--s-2);left:50%;
-  transform:translate(-50%,-120%);
-  background:var(--mürekkep);color:var(--kağıt);
-  padding:10px 18px;border-radius:var(--r-pill);
-  font-size:var(--t-small);font-weight:600;
-  z-index:9999;
-  transition:transform var(--dur-base) var(--ease-out);
-}
-.skip-link:focus{transform:translate(-50%,0)}
-
-/* ---------- kemer motifi ---------- */
-.arch{
-  border-top-left-radius:50%;
-  border-top-right-radius:50%;
-  overflow:hidden;
-}
-
-/* ---------- film grain (premium doku) ---------- */
-body::before{
-  content:"";
-  position:fixed;inset:0;
-  pointer-events:none;
-  z-index:1;
-  opacity:.035;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='table' tableValues='0 0.12'/></feComponentTransfer></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
-  mix-blend-mode:multiply;
-}
-
-/* ---------- erişilebilirlik: hareket azalt ---------- */
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{
-    animation-duration:.001ms!important;
-    animation-iteration-count:1!important;
-    transition-duration:.001ms!important;
-    scroll-behavior:auto!important;
-  }
-}
-</style>
-<style>
-/* ==========================================================================
-   ORTAK BİLEŞENLER — buton, form, pencere, toast, header
-   ========================================================================== */
-
-/* ---------- demo bandı ---------- */
-.demo-strip{
-  background:var(--altın-soft);
-  color:#7a5b20;
-  font-size:11.5px;
-  text-align:center;
-  padding:7px 16px;
-  letter-spacing:.02em;
-  border-bottom:1px solid #e8d8b5;
-  position:relative;
-  z-index:60;
-}
-.demo-strip b{color:#5c4510;font-weight:800}
-.demo-strip.hidden{display:none}
-
-/* ---------- header ---------- */
-.hdr{
-  position:sticky;top:0;z-index:50;
-  background:rgba(244,237,224,.88);
-  backdrop-filter:saturate(140%) blur(14px);
-  -webkit-backdrop-filter:saturate(140%) blur(14px);
-  border-bottom:1px solid var(--kenar);
-  transition:background var(--dur-base) var(--ease-smooth);
-}
-.hdr.scrolled{background:rgba(244,237,224,.96);box-shadow:0 1px 0 rgba(42,36,29,.04)}
-.hdr-in{
-  max-width:var(--max-w);
-  margin:0 auto;
-  padding:0 clamp(16px,4vw,32px);
-  height:var(--hdr);
-  display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);
-}
-.brand{display:flex;align-items:center;gap:12px;min-width:0}
-.brand-mark{
-  width:40px;height:40px;
-  background:var(--mürekkep);
-  color:var(--kağıt);
-  border-radius:50%;
-  display:grid;place-items:center;
-  font-family:var(--serif);
-  font-weight:900;
-  font-size:14px;
-  letter-spacing:-.02em;
-  flex-shrink:0;
-  position:relative;
-}
-.brand-mark::after{
-  content:"";
-  position:absolute;inset:3px;
-  border:1px solid rgba(255,255,255,.25);
-  border-radius:50%;
-}
-.brand-text{display:flex;flex-direction:column;min-width:0;line-height:1.15}
-.brand-name{
-  font-family:var(--serif);
-  font-size:16px;
-  font-weight:700;
-  letter-spacing:-.01em;
-  color:var(--mürekkep);
-  white-space:nowrap;
-}
-.brand-sub{
-  font-size:10.5px;
-  color:var(--muted);
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  margin-top:2px;
-  white-space:nowrap;
-  font-weight:600;
-}
-.hdr-actions{display:flex;align-items:center;gap:8px}
-
-/* ---------- butonlar ---------- */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  font-family:var(--sans);
-  font-weight:600;
-  font-size:14px;
-  padding:12px 22px;
-  border-radius:var(--r-pill);
-  border:0;
-  transition:
-    transform var(--dur-fast) var(--ease-out),
-    background var(--dur-fast) var(--ease-smooth),
-    box-shadow var(--dur-fast) var(--ease-smooth),
-    color var(--dur-fast) var(--ease-smooth);
-  white-space:nowrap;
-  cursor:pointer;
-  letter-spacing:.005em;
-}
-.btn:active{transform:scale(.97)}
-.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
-
-.btn-primary{
-  background:var(--kiremit);color:#fff;
-  box-shadow:0 1px 0 rgba(255,255,255,.25) inset,0 2px 8px rgba(194,90,58,.28);
-}
-.btn-primary:hover:not(:disabled){
-  background:var(--kiremit-d);
-  box-shadow:0 1px 0 rgba(255,255,255,.25) inset,0 4px 14px rgba(194,90,58,.4);
-  transform:translateY(-1px);
-}
-.btn-primary:active:not(:disabled){transform:scale(.97)}
-
-.btn-secondary{
-  background:var(--kağıt);color:var(--mürekkep);
-  border:1.5px solid var(--kenar-2);
-}
-.btn-secondary:hover:not(:disabled){
-  border-color:var(--mürekkep);
-  background:var(--kağıt);
-}
-
-.btn-ghost{
-  background:transparent;color:var(--mürekkep);
-  padding:8px 14px;
-}
-.btn-ghost:hover{background:rgba(42,36,29,.06)}
-
-.btn-forest{background:var(--mürekkep);color:var(--kağıt);box-shadow:0 2px 8px rgba(42,36,29,.25)}
-.btn-forest:hover:not(:disabled){background:#3d3528;transform:translateY(-1px)}
-
-.btn-block{width:100%;padding:15px 22px;font-size:15px}
-.btn-sm{padding:8px 14px;font-size:12.5px;gap:6px}
-
-/* ikon butonu */
-.icon-btn{
-  width:40px;height:40px;
-  display:grid;place-items:center;
-  border-radius:50%;
-  background:transparent;
-  color:var(--mürekkep);
-  transition:background var(--dur-fast) var(--ease-smooth);
-}
-.icon-btn:hover{background:rgba(42,36,29,.08)}
-.icon-btn:active{transform:scale(.94)}
-.icon-btn svg{width:20px;height:20px}
-
-/* header üstündeki küçük durum çipi */
-.status-chip{
-  display:inline-flex;align-items:center;gap:7px;
-  height:36px;padding:0 14px;
-  border-radius:var(--r-pill);
-  background:rgba(42,36,29,.06);
-  color:var(--mürekkep);
-  font-size:12px;
-  font-weight:700;
-  transition:background var(--dur-fast) var(--ease-smooth);
-}
-.status-chip:hover{background:rgba(42,36,29,.11)}
-.status-chip .live{
-  width:7px;height:7px;border-radius:50%;
-  background:var(--ok);
-  position:relative;
-}
-.status-chip .live::after{
-  content:"";position:absolute;inset:0;border-radius:50%;
-  background:var(--ok);
-  animation:ring 2s ease-out infinite;
-}
-@keyframes ring{
-  from{transform:scale(1);opacity:.6}
-  to{transform:scale(2.6);opacity:0}
-}
-
-/* ---------- form elemanları ---------- */
-.field{margin-top:var(--s-4)}
-.field:first-child{margin-top:0}
-.field-label{
-  display:flex;align-items:baseline;justify-content:space-between;gap:8px;
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:.04em;
-  text-transform:uppercase;
-  color:var(--mürekkep-2);
-  margin-bottom:8px;
-}
-.field-label .hint{
-  text-transform:none;letter-spacing:0;
-  font-weight:500;font-size:11.5px;color:var(--muted);
-}
-.input{
-  width:100%;
-  padding:13px 16px;
-  background:var(--kağıt);
-  border:1.5px solid var(--kenar-2);
-  border-radius:var(--r-md);
-  font-size:15px;
-  color:var(--mürekkep);
-  outline:none;
-  transition:
-    border-color var(--dur-fast) var(--ease-smooth),
-    box-shadow var(--dur-fast) var(--ease-smooth),
-    background var(--dur-fast) var(--ease-smooth);
-  font-family:var(--sans);
-}
-.input::placeholder{color:#a89b87}
-.input:hover{border-color:#b3a48b}
-.input:focus{
-  border-color:var(--kiremit);
-  background:#fff;
-  box-shadow:0 0 0 4px rgba(194,90,58,.12);
-}
-.input.invalid{
-  border-color:var(--uyarı);
-  animation:shake .4s var(--ease-smooth);
-}
-.input.invalid:focus{box-shadow:0 0 0 4px rgba(184,73,44,.14)}
-textarea.input{resize:vertical;min-height:80px;line-height:1.5}
-@keyframes shake{
-  10%,90%{transform:translateX(-2px)}
-  30%,70%{transform:translateX(4px)}
-  50%{transform:translateX(-4px)}
-}
-
-/* ---------- pencere (bottom sheet / modal) ---------- */
-.overlay{
-  position:fixed;inset:0;
-  background:rgba(20,16,10,.55);
-  display:flex;align-items:flex-end;justify-content:center;
-  opacity:0;visibility:hidden;
-  transition:opacity var(--dur-base) var(--ease-smooth),visibility var(--dur-base);
-  z-index:100;
-  backdrop-filter:blur(2px);
-  -webkit-backdrop-filter:blur(2px);
-}
-.overlay.show{opacity:1;visibility:visible}
-
-.sheet{
-  background:var(--kağıt);
-  width:100%;max-width:600px;
-  max-height:94vh;max-height:94dvh;
-  border-radius:var(--r-xl) var(--r-xl) 0 0;
-  display:flex;flex-direction:column;
-  transform:translateY(100%);
-  transition:transform var(--dur-slow) var(--ease-out);
-  box-shadow:0 -8px 40px rgba(42,36,29,.25);
-  position:relative;
-}
-.overlay.show .sheet{transform:translateY(0)}
-
-.sheet::before{
-  content:"";
-  position:absolute;top:10px;left:50%;
-  width:44px;height:4px;margin-left:-22px;
-  border-radius:4px;
-  background:var(--kenar-2);
-}
-
-.sheet-head{
-  padding:28px 24px 16px;
-  display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
-  flex-shrink:0;
-}
-.sheet-head h2{
-  font-family:var(--serif);
-  font-size:26px;
-  font-weight:700;
-  letter-spacing:-.015em;
-  line-height:1.1;
-  color:var(--mürekkep);
-  flex:1;
-  min-width:0;
-}
-.sheet-head .sub{
-  display:block;
-  font-size:11.5px;
-  font-family:var(--sans);
-  font-weight:600;
-  color:var(--muted);
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  margin-bottom:4px;
-}
-.sheet-close{
-  width:36px;height:36px;flex-shrink:0;
-  border-radius:50%;
-  background:rgba(42,36,29,.06);
-  color:var(--mürekkep-2);
-  display:grid;place-items:center;
-  transition:background var(--dur-fast) var(--ease-smooth),transform var(--dur-fast);
-  margin-top:-2px;
-}
-.sheet-close:hover{background:rgba(42,36,29,.12)}
-.sheet-close:active{transform:scale(.92)}
-.sheet-close svg{width:18px;height:18px}
-
-.sheet-body{
-  padding:0 24px 16px;
-  overflow-y:auto;
-  flex:1;
-  overscroll-behavior:contain;
-}
-
-.sheet-foot{
-  padding:16px 24px calc(20px + env(safe-area-inset-bottom));
-  border-top:1px solid var(--kenar);
-  background:var(--kağıt);
-  flex-shrink:0;
-}
-
-@media (min-width:640px){
-  .overlay{align-items:center}
-  .sheet{
-    border-radius:var(--r-xl);
-    transform:translateY(20px) scale(.97);
-    max-height:88vh;
-    box-shadow:0 24px 80px rgba(42,36,29,.32);
-  }
-  .overlay.show .sheet{transform:translateY(0) scale(1)}
-  .sheet::before{display:none}
-  .sheet-head{padding-top:24px}
-}
-
-/* ---------- toast ---------- */
-.toast{
-  position:fixed;
-  bottom:24px;left:50%;
-  transform:translate(-50%,100px);
-  background:var(--mürekkep);
-  color:var(--kağıt);
-  padding:14px 24px;
-  border-radius:var(--r-pill);
-  font-size:13.5px;
-  font-weight:600;
-  opacity:0;
-  pointer-events:none;
-  transition:
-    opacity var(--dur-fast) var(--ease-smooth),
-    transform var(--dur-base) var(--ease-out);
-  z-index:500;
-  max-width:calc(100vw - 32px);
-  text-align:center;
-  box-shadow:0 12px 40px rgba(42,36,29,.3);
-  letter-spacing:.005em;
-}
-.toast.show{opacity:1;transform:translate(-50%,0)}
-.toast.bad{background:var(--uyarı)}
-.toast b{font-weight:800}
-
-/* ---------- yükleniyor (skeleton) ---------- */
-@keyframes shimmer{
-  from{background-position:-200% 0}
-  to{background-position:200% 0}
-}
-.skel{
-  background:linear-gradient(90deg,var(--kenar) 0%,#ede4d4 50%,var(--kenar) 100%);
-  background-size:200% 100%;
-  animation:shimmer 1.4s linear infinite;
-  border-radius:var(--r-sm);
-}
-
-/* ---------- reveal animasyonu (JS'ten tetiklenir) ---------- */
-.reveal{
-  opacity:0;
-  transform:translateY(24px);
-  transition:
-    opacity var(--dur-slow) var(--ease-out),
-    transform var(--dur-slow) var(--ease-out);
-  will-change:opacity,transform;
-}
-.reveal.in{
-  opacity:1;
-  transform:translateY(0);
-  will-change:auto;
-}
-.reveal-delay-1{transition-delay:60ms}
-.reveal-delay-2{transition-delay:120ms}
-.reveal-delay-3{transition-delay:180ms}
-
-/* ---------- ince ayraç ---------- */
-.divider{
-  display:flex;align-items:center;gap:14px;
-  color:var(--pirinç);
-  font-size:11px;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-  font-weight:700;
-  margin:var(--s-5) 0;
-}
-.divider::before,.divider::after{
-  content:"";flex:1;
-  height:1px;
-  background:linear-gradient(90deg,transparent,var(--kenar-2),transparent);
-}
-
-/* ---------- badge (etiket) ---------- */
-.badge{
-  display:inline-flex;align-items:center;gap:5px;
-  font-size:10px;font-weight:800;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  padding:4px 9px;
-  border-radius:var(--r-xs);
-  background:var(--mürekkep);
-  color:var(--kağıt);
-  line-height:1;
-}
-.badge.kiremit{background:var(--kiremit)}
-.badge.zeytin{background:var(--zeytin)}
-.badge.pirinç{background:var(--pirinç)}
-.badge.outline{
-  background:transparent;
-  color:var(--mürekkep);
-  border:1px solid var(--kenar-2);
-}
-</style>
-<style>
-/* ==========================================================================
-   HERO — Ege Sofrası imza alanı
-   ========================================================================== */
-.hero{
-  position:relative;
-  padding:clamp(32px,5vw,64px) 0 clamp(24px,4vw,48px);
-  overflow:hidden;
-}
-.hero::before{
-  content:"";
-  position:absolute;
-  top:-30%;right:-15%;
-  width:60vw;height:60vw;
-  max-width:900px;max-height:900px;
-  background:radial-gradient(circle at center,rgba(194,90,58,.08) 0%,transparent 60%);
-  pointer-events:none;
-  z-index:0;
-}
-.hero-in{
-  position:relative;
-  max-width:var(--max-w);
-  margin:0 auto;
-  padding:0 clamp(16px,4vw,32px);
-  display:grid;
-  grid-template-columns:1fr;
-  gap:clamp(28px,5vw,56px);
-  align-items:center;
-  z-index:1;
-}
-@media (min-width:768px){
-  .hero-in{grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr)}
-}
-
-/* --- metin bloğu --- */
-.hero-text{min-width:0}
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:10px;
-  font-family:var(--sans);
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:var(--pirinç-d);
-  margin-bottom:20px;
-  opacity:0;
-  animation:fadeUp .7s var(--ease-out) .05s forwards;
-}
-.hero-eyebrow::before{
-  content:"";
-  width:24px;height:1px;
-  background:var(--pirinç);
-}
-.hero h1{
-  font-family:var(--serif);
-  font-weight:900;
-  font-size:clamp(42px,10vw,88px);
-  line-height:.95;
-  letter-spacing:-.035em;
-  color:var(--mürekkep);
-  margin:0;
-  opacity:0;
-  animation:fadeUp .8s var(--ease-out) .12s forwards;
-}
-.hero h1 em{
-  font-style:italic;
-  font-weight:400;
-  color:var(--kiremit);
-  letter-spacing:-.02em;
-  position:relative;
-}
-.hero h1 em::after{
-  content:"";
-  position:absolute;
-  left:2%;right:2%;bottom:.06em;
-  height:.06em;
-  background:var(--kiremit);
-  border-radius:2px;
-  opacity:.35;
-}
-.hero-lede{
-  font-family:var(--sans);
-  font-size:clamp(15px,1.8vw,17px);
-  line-height:1.55;
-  color:var(--mürekkep-2);
-  max-width:38ch;
-  margin:20px 0 0;
-  opacity:0;
-  animation:fadeUp .8s var(--ease-out) .2s forwards;
-}
-.hero-lede b{font-weight:700;color:var(--mürekkep)}
-.hero-lede .italic{font-family:var(--serif);font-style:italic;color:var(--kiremit);font-weight:400}
-
-/* --- hero meta çipleri --- */
-.hero-meta{
-  display:flex;flex-wrap:wrap;gap:8px;
-  margin-top:24px;
-  opacity:0;
-  animation:fadeUp .8s var(--ease-out) .3s forwards;
-}
-.hero-meta .chip{
-  display:inline-flex;align-items:center;gap:6px;
-  height:32px;padding:0 12px;
-  border-radius:var(--r-pill);
-  background:rgba(42,36,29,.04);
-  color:var(--mürekkep-2);
-  border:1px solid rgba(42,36,29,.08);
-  font-size:11.5px;
-  font-weight:700;
-  letter-spacing:.04em;
-  text-transform:uppercase;
-}
-.hero-meta .chip::before{
-  content:"";
-  width:7px;height:7px;border-radius:50%;
-  background:var(--kiremit);
-  display:inline-block;
-}
-
-@keyframes fadeUp{
-  to{opacity:1;transform:translateY(0)}
-}
-@keyframes floaty{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-8px)}
-}
-
-/* --- hero görsel --- */
-.hero-art{
-  position:relative;
-  display:flex;justify-content:center;align-items:center;
-  min-height:540px;
-  pointer-events:none;
-  z-index:1;
-}
+/* Kemer Formu */
+.arch-container{width:100%;max-width:260px;margin:0 auto 24px;position:relative}
 .arch-frame{
-  position:relative;
-  width:min(340px,72vw);
-  aspect-ratio:0.82;
-  border-radius:28% 28% 12% 12%/18% 18% 12% 12%;
-  overflow:hidden;
-  border:1px solid rgba(240,233,219,.3);
-  box-shadow:var(--shadow-lg);
-  background:linear-gradient(180deg,#f7f1e4 0%,#efe4cf 100%);
+  width:100%;
+  aspect-ratio: 0.7; /* Kare değil, uzun bir kemer formu */
+  border-top-left-radius: 999px;
+  border-top-right-radius: 999px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--kenar-2);
+  box-shadow: 0 20px 60px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,255,255,.05);
 }
-.arch-frame::before{
-  content:"";
-  position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(30,23,18,.03) 0%,rgba(30,23,18,.22) 100%);
-}
-.arch-frame::after{
-  content:"";
-  position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(15,12,10,.18) 0%,transparent 30%,rgba(15,12,10,.6) 100%);
-}
-.arch-badge{
-  position:absolute;top:8%;left:50%;
-  transform:translateX(-50%);
-  display:inline-flex;align-items:center;justify-content:center;
-  padding:6px 12px;
-  border-radius:999px;
-  font-size:10px;
-  font-weight:800;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:#f6f0e5;
-  background:rgba(42,36,29,.38);
-  border:1px solid rgba(255,255,255,.26);
-  backdrop-filter:blur(5px);
-  -webkit-backdrop-filter:blur(5px);
-  z-index:2;
-}
-.hero-leaf{
-  position:absolute;
-  right:6%;bottom:0;
-  width:110px;height:150px;
-  transform:rotate(8deg);
-  color:rgba(61,93,50,.7);
-  opacity:.9;
-  animation:floaty 5s ease-in-out infinite;
-  z-index:2;
-}
-.hero-leaf svg{width:100%;height:100%}
+.arch-frame video{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:1}
+.arch-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,12,10,.1) 0%,transparent 50%,rgba(15,12,10,.85) 100%);z-index:2;pointer-events:none}
+.arch-badge{position:absolute;top:12%;left:50%;transform:translateX(-50%);z-index:3;background:var(--bg);color:var(--gold);border:1px solid var(--gold);padding:5px 14px;border-radius:30px;font-family:var(--serif);font-style:italic;font-size:12px;white-space:nowrap;box-shadow:0 4px 15px rgba(0,0,0,.4)}
 
-@media (max-width:767px){
-  .hero{padding-top:24px}
-  .hero-in{gap:18px}
-  .hero-art{min-height:380px}
-  .arch-frame{width:min(260px,74vw)}
-  .hero-leaf{display:none}
-}
+/* Metinler */
+.hero-eyebrow{color:var(--gold);font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;justify-content:center;gap:10px}
+.hero-eyebrow::before,.hero-eyebrow::after{content:"";width:20px;height:1px;background:var(--gold)}
+.hero h1{font-family:var(--serif);font-size:clamp(38px,10vw,56px);line-height:1.05;letter-spacing:-.02em;margin-bottom:12px;color:var(--ink)}
+.hero h1 em{color:var(--accent);font-style:italic;font-weight:400}
+.hero p{font-size:15px;color:var(--ink-2);max-width:34ch;margin:0 auto;line-height:1.6}
+.hero p b{color:var(--ink);font-weight:600}
+
+/* --- MENÜ ALANI --- */
+.menu-section{max-width:1160px;margin:0 auto;padding:40px 20px 100px;z-index:2;position:relative}
+.section-title{font-family:var(--serif);font-size:28px;margin-bottom:20px;display:flex;align-items:center;gap:15px}
+.section-title::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--kenar-2),transparent)}
+
+/* Ürün Kartları */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:20px}
+.card{background:var(--bg-3);border:1px solid var(--kenar);border-radius:16px;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-4px);border-color:var(--kenar-2);box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.card-img{width:100%;aspect-ratio:1;background:#111;position:relative}
+.card-img img{width:100%;height:100%;object-fit:cover}
+.card-body{padding:16px}
+.card-title{font-family:var(--serif);font-size:18px;font-weight:700;margin-bottom:6px}
+.card-desc{font-size:13px;color:var(--ink-3);margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-foot{display:flex;align-items:center;justify-content:space-between}
+.card-price{font-family:var(--serif);font-size:20px;font-weight:800;color:var(--accent)}
+.btn-add{background:var(--accent);color:var(--bg);padding:8px 16px;border-radius:30px;font-weight:700;font-size:13px;transition:background .2s}
+.btn-add:hover{background:var(--accent-d)}
+
+/* --- HOŞ GELDİNİZ BİLDİRİMİ --- */
+.welcome-toast{position:fixed;top:20px;left:50%;transform:translate(-50%,-100px);background:var(--bg-3);border:1px solid var(--gold);color:var(--gold);padding:14px 28px;border-radius:40px;font-family:var(--serif);font-size:16px;box-shadow:0 10px 40px rgba(0,0,0,.6);z-index:999;transition:transform .6s cubic-bezier(.2,.9,.3,1),opacity .6s;opacity:0;display:flex;align-items:center;gap:10px}
+.welcome-toast.show{transform:translate(-50%,0);opacity:1}
+.welcome-toast svg{width:20px;height:20px}
 </style>
+</head>
 <body>
-  <a href="#mainMenu" class="skip-link">İçeriğe geç</a>
 
-  <div class="demo-strip hidden" id="demoBanner"></div>
+<div class="welcome-toast" id="welcomeToast">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9Z"/></svg>
+  <span>Masa 34 Bistro'ya Hoş Geldiniz</span>
+</div>
 
-  <header class="hdr" id="hdr">
-    <div class="hdr-in">
-      <div class="brand">
-        <div class="brand-mark">M34</div>
-        <div class="brand-text">
-          <div class="brand-name">Masa 34 Bistro</div>
-          <div class="brand-sub" id="tableSub">Ege Sofrası · Menü</div>
+<header class="hdr">
+  <div class="hdr-in">
+    <div class="brand">
+      <div class="brand-logo">M34</div>
+      <div>
+        <div class="brand-name">Masa 34 Bistro</div>
+        <div class="brand-sub">Ege Sofrası</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  
+  <!-- CANLI FOTOĞRAF (LIVE PHOTO) -->
+  <div class="arch-container">
+    <div class="arch-frame">
+      <video autoplay loop muted playsinline preload="auto">
+        <source src="https://videos.pexels.com/video-files/4065924/4065924-hd_1920_1080_25fps.mp4" type="video/mp4">
+      </video>
+      <div class="arch-overlay"></div>
+      <div class="arch-badge">Mevsimin Seçkisi</div>
+    </div>
+  </div>
+
+  <div class="hero-eyebrow">Ege Sofrası</div>
+  <h1>Sofranız <em>hazır</em>.</h1>
+  <p>Ege'nin mevsimlik lezzetleri, <b>masanıza</b> ya da kapınıza. Taze malzeme, sade tabaklar, dürüst fiyatlar.</p>
+</section>
+
+<main class="menu-section">
+  <h2 class="section-title">Menüden Seçkiler</h2>
+  <div class="grid">
+    
+    <!-- Örnek Ürün 1 -->
+    <div class="card">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&h=500&fit=crop&q=80" alt="Burger"></div>
+      <div class="card-body">
+        <div class="card-title">Klasik Ev Burgeri</div>
+        <div class="card-desc">Dana köftesi, cheddar, karamelize soğan, özel bistro sos.</div>
+        <div class="card-foot">
+          <span class="card-price">₺185</span>
+          <button class="btn-add">Ekle</button>
         </div>
       </div>
-      <div class="hdr-actions">
-        <button class="status-chip hidden" id="myOrderBtn" type="button">
-          <span class="live"></span> Siparişim
-        </button>
+    </div>
+
+    <!-- Örnek Ürün 2 -->
+    <div class="card">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=500&h=500&fit=crop&q=80" alt="Pizza"></div>
+      <div class="card-body">
+        <div class="card-title">Margherita Pizza</div>
+        <div class="card-desc">San Marzano domates, taze mozzarella, fesleğen.</div>
+        <div class="card-foot">
+          <span class="card-price">₺175</span>
+          <button class="btn-add">Ekle</button>
+        </div>
       </div>
     </div>
-  </header>
 
-  <section class="hero">
-    <div class="hero-in">
-      <div class="hero-text">
-        <div class="hero-eyebrow" id="heroEyebrow">Ege sofrası · Mevsimlik menü</div>
-        <h1>Sofranız <em>hazır</em>.</h1>
-        <p class="hero-lede">
-          Ege'nin mevsimlik lezzetleri, <b>masanıza</b> ya da <span class="italic">kapınıza</span>. Taze malzeme, sade tabaklar, dürüst fiyatlar.
-        </p>
-        <div class="hero-meta" id="heroMeta"></div>
-      </div>
-
-      <div class="hero-art">
-        <video autoplay loop muted playsinline preload="auto" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1;">
-          <source src="https://videos.pexels.com/video-files/4065924/4065924-hd_1920_1080_25fps.mp4" type="video/mp4">
-        </video>
+    <!-- Örnek Ürün 3 -->
+    <div class="card">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&h=500&fit=crop&q=80" alt="Salata"></div>
+      <div class="card-body">
+        <div class="card-title">Akdeniz Salata</div>
+        <div class="card-desc">Roka, domates, zeytin, nar ekşisi, zeytinyağı.</div>
+        <div class="card-foot">
+          <span class="card-price">₺130</span>
+          <button class="btn-add">Ekle</button>
+        </div>
       </div>
     </div>
-  </section>
 
-  <script>
-    window.addEventListener("load", () => {
+  </div>
+</main>
+
+<script>
+  // Sayfa yüklendiğinde Hoş Geldiniz mesajını göster
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      const toast = document.getElementById("welcomeToast");
+      toast.classList.add("show");
+      
+      // 4 saniye sonra kaydırarak gizle
       setTimeout(() => {
-        if(typeof toast === "function") {
-          toast("Masa 34 Bistro'ya hoş geldiniz! Afiyet olsun.", false);
-        }
-      }, 800);
-    });
-  </script>
+        toast.classList.remove("show");
+      }, 4000);
+    }, 500); // Sayfa açıldıktan yarım saniye sonra belirir
+  });
+</script>
+
 </body>
 </html>
